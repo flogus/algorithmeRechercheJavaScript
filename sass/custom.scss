@@ -21,3 +21,24 @@
 #dropdowns-container {
   padding-bottom: 20px;
 }
+
+#cards-container {
+  font-size: 16px;
+  font-weight: 300;
+  .card {
+    flex: 0 0 33%;
+  }
+  img.card-img-top {
+    height: 140px;
+    background-color: lightgray;
+  }
+  .descriptions {
+    font-size: 12px;
+  }
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  height: 90px;
+  overflow: auto;
+}

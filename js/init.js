@@ -1,17 +1,16 @@
-async function getRecipes() {
-  const recipes = await fetch("./data/recipes.json")
-    .then((response) => response.json())
-    .then((data) => data)
-    .catch((err) => {
-      console.error("Erreur fetch recipes");
-    });
+async function buildResults() {
+  const cardsContainer = document.getElementById("cards-container");
+  cardsContainer.innerHTML = "";
 
-  return {
-    recipes,
-  };
+  recipes.forEach((element) => {
+    console.log(element);
+
+    const cardModel = new Card(element);
+    cardsContainer.innerHTML += cardModel.buildCard();
+  });
 }
 async function init() {
-  const { recipes } = await getRecipes();
   console.log("init");
+  buildResults();
 }
 init();

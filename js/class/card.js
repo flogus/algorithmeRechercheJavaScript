@@ -1,27 +1,27 @@
 class Card {
-  constructor() {}
-  /**
-     *   <div class="card" style="width: 18rem">
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-     */
+  constructor(element) {
+    this._name = element.name;
+    this._time = element.time;
+    this._description = element.description;
+  }
   buildCard() {
-    const card = document.createElement("div");
-    card.classList.add("card");
+    let card = "<div class='card'>";
 
-    const cardImg = document.createElement("img");
-    cardImg.classList.add("card-img-top");
+    card += `<img class="card-img-top" src='assets/placeholder.png' alt='${this._name}'/>`;
 
-    const cardBody = document.createElement("div");
-    cardBody.classList.add("card-body");
+    card += `<div class="row">`;
+    card += `<div class="col">${this._name}</div>`;
+    card += `<div class="col font-weight-bold">${this._time}</div>`;
+    card += `</div>`;
+
+    card += `<div class="row descriptions">`;
+    card += `<div class="col">
+    
+    </div>`;
+    card += `<div class="col ellipsis">${this._description}</div>`;
+    card += `</div>`;
+
+    card += "</div>";
 
     return card;
   }
