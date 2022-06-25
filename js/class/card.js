@@ -3,22 +3,40 @@ class Card {
     this._name = element.name;
     this._time = element.time;
     this._description = element.description;
+    this._ingredients = element.ingredients;
   }
   buildCard() {
-    let card = "<div class='card'>";
+    let card = "<div class='card m-3'>";
 
-    card += `<img class="card-img-top" src='assets/placeholder.png' alt='${this._name}'/>`;
+    card += `<img class="card-img-top" src='assets/placehoder.png' alt='${this._name}'/>`;
 
-    card += `<div class="row">`;
-    card += `<div class="col">${this._name}</div>`;
-    card += `<div class="col font-weight-bold">${this._time}</div>`;
+    card += `<div class="flex-row d-flex">`;
+    card += `<div class="mr-auto p-2">${this._name}</div>`;
+    card += `<div class="p-2 font-weight-bold"><i class="bi bi-clock"></i>
+    ${this._time}</div>`;
     card += `</div>`;
 
-    card += `<div class="row descriptions">`;
-    card += `<div class="col">
-    
-    </div>`;
-    card += `<div class="col ellipsis">${this._description}</div>`;
+    card += `<div class="flex-row d-flex descriptions">`;
+    card += `<div>`;
+    card += `<ul class="p-2">`;
+    for (const element of this._ingredients) {
+      console.log("element", element);
+      card += `<li><span class='font-weight-bold'>`;
+      card += element["ingredient"];
+      card += `:</span> <span>`;
+      if (element["quantity"] !== undefined) {
+        card += element["quantity"];
+      }
+      if (element["unit"] !== undefined) {
+        card += element["unit"];
+      }
+      card += `</span>`;
+      card += `</li>`;
+    }
+    card += `</ul>`;
+    card += `</div>`;
+
+    card += `<div class="p-2">${this._description}</div>`;
     card += `</div>`;
 
     card += "</div>";

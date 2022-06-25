@@ -1,3 +1,7 @@
+@import "custom-colors.scss";
+@import "custom-alerts.scss";
+@import "custom-dropdowns.scss";
+
 #logo-container {
   padding: 50px 0 20px 0;
   img {
@@ -11,9 +15,21 @@
     width: 100%;
     input {
       width: 100%;
-      background-color: lightgray;
+      background-color: #e1e1e1;
       font-size: 14px;
       padding: 10px;
+      border: 1px solid #e1e1e1;
+      border-radius: 5px;
+      &::placeholder {
+        color: #9d9d9d;
+      }
+      &:focus-visible {
+        outline-color: #c3393f;
+      }
+    }
+    .bi-search {
+      right: 30px;
+      top: 9px;
     }
   }
 }
@@ -25,15 +41,22 @@
 #cards-container {
   font-size: 16px;
   font-weight: 300;
+  display: flex;
+  flex-wrap: wrap;
   .card {
-    flex: 0 0 33%;
+    flex: 1 0 29%;
+    background-color: #e1e1e1;
+    border-radius: 5px;
   }
   img.card-img-top {
     height: 140px;
-    background-color: lightgray;
+    background-color: #bab0b0;
   }
   .descriptions {
-    font-size: 12px;
+    font-size: 11px;
+    > div:last-child {
+      flex: 0 0 60%;
+    }
   }
 }
 
@@ -41,4 +64,16 @@
   text-overflow: ellipsis;
   height: 90px;
   overflow: auto;
+}
+
+// Layout debug
+// main.container {
+//   background-color: lightblue;
+//   > div {
+//     border: 1px solid red;
+//   }
+// }
+
+ul {
+  list-style: none;
 }

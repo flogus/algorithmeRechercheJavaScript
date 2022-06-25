@@ -1,0 +1,57 @@
+.alert {
+  color: #fff;
+  font-size: 14px;
+  padding: 5px 20px;
+  margin-right: 10px;
+  .close {
+    font-size: 14px;
+    color: #fff;
+    opacity: 1;
+    cursor: pointer;
+    left: 5px;
+    position: relative;
+    top: 3px;
+  }
+}
+.btn {
+  margin-right: 10px;
+  &:hover {
+    color: #fff;
+  }
+}
+.bg-ingredient {
+  color: #fff;
+  font-size: 14px;
+  background-color: $ingredient-color;
+  border-color: $ingredient-color;
+}
+.bg-appareil {
+  color: #fff;
+  font-size: 14px;
+  background-color: $appareil-color;
+  border-color: $appareil-color;
+}
+.bg-ustensile {
+  color: #fff;
+  font-size: 14px;
+  background-color: $ustensile-color;
+  border-color: $ustensile-color;
+}
+.dropdown-item {
+  form {
+    width: 100%;
+    input[type="search"] {
+      width: 100%;
+      border-width: 0;
+      background-color: $ingredient-color;
+      color: #fff;
+      &::placeholder {
+        color: lighten($ingredient-color, 20%);
+      }
+    }
+  }
+  &:focus,
+  &:hover {
+    background-color: transparent;
+  }
+}

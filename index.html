@@ -6,6 +6,10 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
+    />
     <meta name="description" content="" />
     <title>Les petits plats</title>
 
@@ -17,35 +21,93 @@
   </head>
   <body>
     <main role="main" class="container">
-      <div class="d-flex justify-content-center" id="logo-container">
-        <img src="assets/les-petits-plats-logo.png" alt="Les petits plats" />
+      <div class="row">
+        <div class="col">
+          <div class="d-flex justify-content-center" id="logo-container">
+            <img
+              src="assets/les-petits-plats-logo.png"
+              alt="Les petits plats"
+            />
+          </div>
+        </div>
       </div>
       <div class="row" id="search-container">
-        <form><input type="search" /></form>
+        <div class="col">
+          <form class="positon-relative">
+            <input type="search" placeholder="Rechercher une recette" />
+            <i class="bi bi-search position-absolute"></i>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col d-flex">
+          <div class="alert bg-ingredient" role="alert">
+            Poulet
+            <i class="bi bi-x-circle text-white close" data-dismiss="alert"></i>
+          </div>
+          <div class="alert bg-appareil" role="alert">
+            Four
+            <i class="bi bi-x-circle text-white close" data-dismiss="alert"></i>
+          </div>
+          <div class="alert bg-ustensile" role="alert">
+            Presse citron
+            <i class="bi bi-x-circle text-white close" data-dismiss="alert"></i>
+          </div>
+        </div>
       </div>
       <div class="row" id="dropdowns-container">
         <div class="col">
           <div class="btn-group">
             <button
               type="button"
-              class="btn btn-primary dropdown-toggle"
+              class="btn bg-ingredient dropdown-toggle"
               data-toggle="dropdown"
               aria-expanded="false"
             >
               Ingredients
             </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Separated link</a>
+            <div class="dropdown-menu bg-ingredient">
+              <div class="dropdown-item p-2" href="#">
+                <div class="col">
+                  <div class="row">
+                    <form>
+                      <input
+                        type="search"
+                        placeholder="Rechercher un ingrédient"
+                      />
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <ul class="p-2">
+                    <li>Lait de coco</li>
+                    <li>Sucre</li>
+                    <li>Concombre</li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <ul class="p-2">
+                    <li>Lait de coco</li>
+                    <li>Sucre</li>
+                    <li>Concombre</li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <ul class="p-2">
+                    <li>Lait de coco</li>
+                    <li>Sucre</li>
+                    <li>Concombre</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
           <div class="btn-group">
             <button
               type="button"
-              class="btn btn-success dropdown-toggle"
+              class="btn bg-appareil dropdown-toggle"
               data-toggle="dropdown"
               aria-expanded="false"
             >
@@ -62,7 +124,7 @@
           <div class="btn-group">
             <button
               type="button"
-              class="btn btn-danger dropdown-toggle"
+              class="btn bg-ustensile dropdown-toggle"
               data-toggle="dropdown"
               aria-expanded="false"
             >
@@ -78,10 +140,11 @@
           </div>
         </div>
       </div>
-      <div
-        class="d-flex align-content-around flex-wrap"
-        id="cards-container"
-      ></div>
+      <div class="row">
+        <div class="col p-0">
+          <div id="cards-container"></div>
+        </div>
+      </div>
     </main>
     <!-- /.container -->
 
