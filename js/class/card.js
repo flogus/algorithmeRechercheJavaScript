@@ -8,7 +8,7 @@ class Card {
   buildCard() {
     let card = "<div class='card m-3'>";
 
-    card += `<img class="card-img-top" src='assets/placehoder.png' alt='${this._name}'/>`;
+    card += `<img class="card-img-top" src='assets/placeholder.png' alt='${this._name}'/>`;
 
     card += `<div class="flex-row d-flex">`;
     card += `<div class="mr-auto p-2">${this._name}</div>`;
@@ -20,7 +20,6 @@ class Card {
     card += `<div>`;
     card += `<ul class="p-2">`;
     for (const element of this._ingredients) {
-      console.log("element", element);
       card += `<li><span class='font-weight-bold'>`;
       card += element["ingredient"];
       card += `:</span> <span>`;

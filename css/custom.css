@@ -30,11 +30,51 @@
   border-color: #2869f4;
 }
 
+.bg-ingredient input[type="search"] {
+  background-color: #2869f4;
+}
+
+.bg-ingredient input[type="search"]::-webkit-input-placeholder {
+  color: #89adf9;
+}
+
+.bg-ingredient input[type="search"]:-ms-input-placeholder {
+  color: #89adf9;
+}
+
+.bg-ingredient input[type="search"]::-ms-input-placeholder {
+  color: #89adf9;
+}
+
+.bg-ingredient input[type="search"]::placeholder {
+  color: #89adf9;
+}
+
 .bg-appareil {
   color: #fff;
   font-size: 14px;
   background-color: #5bd393;
   border-color: #5bd393;
+}
+
+.bg-appareil input[type="search"] {
+  background-color: #5bd393;
+}
+
+.bg-appareil input[type="search"]::-webkit-input-placeholder {
+  color: #abe9c8;
+}
+
+.bg-appareil input[type="search"]:-ms-input-placeholder {
+  color: #abe9c8;
+}
+
+.bg-appareil input[type="search"]::-ms-input-placeholder {
+  color: #abe9c8;
+}
+
+.bg-appareil input[type="search"]::placeholder {
+  color: #abe9c8;
 }
 
 .bg-ustensile {
@@ -44,6 +84,26 @@
   border-color: #e14b42;
 }
 
+.bg-ustensile input[type="search"] {
+  background-color: #e14b42;
+}
+
+.bg-ustensile input[type="search"]::-webkit-input-placeholder {
+  color: #ef9f9a;
+}
+
+.bg-ustensile input[type="search"]:-ms-input-placeholder {
+  color: #ef9f9a;
+}
+
+.bg-ustensile input[type="search"]::-ms-input-placeholder {
+  color: #ef9f9a;
+}
+
+.bg-ustensile input[type="search"]::placeholder {
+  color: #ef9f9a;
+}
+
 .dropdown-item form {
   width: 100%;
 }
@@ -51,24 +111,7 @@
 .dropdown-item form input[type="search"] {
   width: 100%;
   border-width: 0;
-  background-color: #2869f4;
   color: #fff;
-}
-
-.dropdown-item form input[type="search"]::-webkit-input-placeholder {
-  color: #89adf9;
-}
-
-.dropdown-item form input[type="search"]:-ms-input-placeholder {
-  color: #89adf9;
-}
-
-.dropdown-item form input[type="search"]::-ms-input-placeholder {
-  color: #89adf9;
-}
-
-.dropdown-item form input[type="search"]::placeholder {
-  color: #89adf9;
 }
 
 .dropdown-item:focus, .dropdown-item:hover {
@@ -77,6 +120,17 @@
 
 .dropdown-menu.show {
   min-width: 500px;
+}
+
+.dropdown-menu.show .flex-33 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 33%;
+          flex: 0 0 33%;
+}
+
+.overflow {
+  overflow: auto;
+  max-height: 450px;
 }
 
 #logo-container {

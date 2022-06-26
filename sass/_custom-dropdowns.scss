@@ -1,3 +1,11 @@
 .dropdown-menu.show {
   min-width: 500px;
+  .flex-33 {
+    flex: 0 0 33%;
+  }
+}
+
+.overflow {
+  overflow: auto;
+  max-height: 450px;
 }

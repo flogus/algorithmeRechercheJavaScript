@@ -24,18 +24,36 @@
   font-size: 14px;
   background-color: $ingredient-color;
   border-color: $ingredient-color;
+  input[type="search"] {
+    background-color: $ingredient-color;
+    &::placeholder {
+      color: lighten($ingredient-color, 20%);
+    }
+  }
 }
 .bg-appareil {
   color: #fff;
   font-size: 14px;
   background-color: $appareil-color;
   border-color: $appareil-color;
+  input[type="search"] {
+    background-color: $appareil-color;
+    &::placeholder {
+      color: lighten($appareil-color, 20%);
+    }
+  }
 }
 .bg-ustensile {
   color: #fff;
   font-size: 14px;
   background-color: $ustensile-color;
   border-color: $ustensile-color;
+  input[type="search"] {
+    background-color: $ustensile-color;
+    &::placeholder {
+      color: lighten($ustensile-color, 20%);
+    }
+  }
 }
 .dropdown-item {
   form {
@@ -43,11 +61,7 @@
     input[type="search"] {
       width: 100%;
       border-width: 0;
-      background-color: $ingredient-color;
       color: #fff;
-      &::placeholder {
-        color: lighten($ingredient-color, 20%);
-      }
     }
   }
   &:focus,
