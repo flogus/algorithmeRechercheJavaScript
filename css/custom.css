@@ -128,6 +128,10 @@
           flex: 0 0 33%;
 }
 
+.dropdown-menu.show .flex-33 a {
+  color: #fff;
+}
+
 .overflow {
   overflow: auto;
   max-height: 450px;

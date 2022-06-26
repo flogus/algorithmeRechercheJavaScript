@@ -14,7 +14,10 @@ class DropDown {
   buildMenu = (data) => {
     let menu = "<div class='d-flex align-items-start flex-row flex-wrap'>";
     this._data.forEach(function (element) {
-      menu += "<div class='p-2 flex-33'>" + element + "</div>";
+      menu +=
+        "<div class='p-2 flex-33'><a href='#'>" +
+        capitalizeFirstLetter(element) +
+        "</a></div>";
     });
     menu += "</div>";
     return menu;
