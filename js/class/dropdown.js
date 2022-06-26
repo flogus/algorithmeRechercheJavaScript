@@ -38,7 +38,9 @@ class DropDown {
         <div class="row p-1">
           <form>`;
     template +=
-      `<input type="search" placeholder="Rechercher un ` +
+      `<input type="search" id="search` +
+      this.getClassName() +
+      `" placeholder="Rechercher un ` +
       this.getClassName() +
       `"/>`;
     template += `

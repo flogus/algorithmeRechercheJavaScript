@@ -61,5 +61,6 @@ async function init() {
   filterObj();
   buildDropDowns();
   buildResults();
+  doFocus();
 }
 init();
