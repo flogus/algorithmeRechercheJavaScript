@@ -13,7 +13,7 @@ class Card {
     card += `<div class="flex-row d-flex">`;
     card += `<div class="mr-auto p-2">${this._name}</div>`;
     card += `<div class="p-2 font-weight-bold"><i class="bi bi-clock"></i>
-    ${this._time}</div>`;
+    ${this._time} min</div>`;
     card += `</div>`;
 
     card += `<div class="flex-row d-flex descriptions">`;
