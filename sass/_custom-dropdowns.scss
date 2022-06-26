@@ -1,9 +1,70 @@
+button.btn {
+  color: #fff;
+  font-size: 14px;
+}
+
+.bg-ingredient {
+  background-color: $ingredient-color;
+  border-color: $ingredient-color;
+  input[type="search"] {
+    &::placeholder {
+      color: lighten($ingredient-color, 20%);
+    }
+    &:focus-visible {
+      outline-color: darken($ingredient-color, 20%);
+    }
+  }
+}
+.bg-appareil {
+  background-color: $appareil-color;
+  border-color: $appareil-color;
+  input[type="search"] {
+    &::placeholder {
+      color: lighten($appareil-color, 20%);
+    }
+    &:focus-visible {
+      outline-color: darken($appareil-color, 20%);
+    }
+  }
+}
+.bg-ustensile {
+  background-color: $ustensile-color;
+  border-color: $ustensile-color;
+  input[type="search"] {
+    &::placeholder {
+      color: lighten($ustensile-color, 20%);
+    }
+    &:focus-visible {
+      outline-color: darken($ustensile-color, 20%);
+    }
+  }
+}
+
 .dropdown-menu.show {
   min-width: 500px;
   .flex-33 {
     flex: 0 0 33%;
     a {
       color: #fff;
+      font-size: 12px;
     }
+  }
+}
+.dropdown-item {
+  form {
+    width: 100%;
+    input[type="search"] {
+      background-color: transparent;
+      width: 100%;
+      border-width: 0;
+      color: #fff;
+      font-size: 12px;
+      outline-offset: 4px;
+      outline-width: 3px;
+    }
+  }
+  &:focus,
+  &:hover {
+    background-color: transparent;
   }
 }
