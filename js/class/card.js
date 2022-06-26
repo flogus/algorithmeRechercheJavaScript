@@ -35,7 +35,7 @@ class Card {
     card += `</ul>`;
     card += `</div>`;
 
-    card += `<div class="p-2">${this._description}</div>`;
+    card += `<div class="p-2 overflow-medium">${this._description}</div>`;
     card += `</div>`;
 
     card += "</div>";

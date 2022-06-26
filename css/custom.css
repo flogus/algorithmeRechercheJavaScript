@@ -132,9 +132,24 @@
   color: #fff;
 }
 
-.overflow {
+.ellipsis {
+  text-overflow: ellipsis;
+  height: 90px;
+  overflow: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+.overflow-large {
   overflow: auto;
   max-height: 450px;
+}
+
+.overflow-medium {
+  overflow: auto;
+  max-height: 190px;
 }
 
 #logo-container {
@@ -222,15 +237,5 @@
   -webkit-box-flex: 0;
       -ms-flex: 0 0 60%;
           flex: 0 0 60%;
-}
-
-.ellipsis {
-  text-overflow: ellipsis;
-  height: 90px;
-  overflow: auto;
-}
-
-ul {
-  list-style: none;
 }
 /*# sourceMappingURL=custom.css.map */

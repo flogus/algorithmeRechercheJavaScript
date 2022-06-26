@@ -1,0 +1,18 @@
+.ellipsis {
+  text-overflow: ellipsis;
+  height: 90px;
+  overflow: auto;
+}
+
+ul {
+  list-style: none;
+}
+.overflow-large {
+  overflow: auto;
+  max-height: 450px;
+}
+
+.overflow-medium {
+  overflow: auto;
+  max-height: 190px;
+}

@@ -23,7 +23,8 @@ class DropDown {
     return menu;
   };
   getDropDown = (type) => {
-    let template = "<div class='btn-group'>";
+    let template =
+      "<div class='btn-group' id='" + this.getClassName() + "-container'>";
     template += `<button type="button" class="btn bg-`;
     template += this.getClassName();
     template += ` dropdown-toggle" data-toggle="dropdown" aria-expanded="false">`;
@@ -45,7 +46,7 @@ class DropDown {
         </div>
       </div>
     </div>
-    <div class="p-2 overflow">`;
+    <div class="p-2 overflow-large">`;
     template += this.buildMenu();
     template += "</div>";
     template += "</div></div>";

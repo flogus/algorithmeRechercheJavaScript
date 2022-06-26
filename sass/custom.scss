@@ -1,6 +1,7 @@
 @import "custom-colors.scss";
 @import "custom-alerts.scss";
 @import "custom-dropdowns.scss";
+@import "custom-utils.scss";
 
 #logo-container {
   padding: 50px 0 20px 0;
@@ -58,22 +59,4 @@
       flex: 0 0 60%;
     }
   }
-}
-
-.ellipsis {
-  text-overflow: ellipsis;
-  height: 90px;
-  overflow: auto;
-}
-
-// Layout debug
-// main.container {
-//   background-color: lightblue;
-//   > div {
-//     border: 1px solid red;
-//   }
-// }
-
-ul {
-  list-style: none;
 }
