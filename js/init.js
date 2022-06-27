@@ -28,7 +28,6 @@ async function buildResults() {
 }
 
 async function filterObj() {
-  console.log("recipes", recipes);
   recipes.forEach(function (element) {
     let lesIngredients = element.ingredients;
     lesIngredients.forEach(function (ingredients) {
@@ -46,6 +45,7 @@ async function filterObj() {
       }
     });
   });
+  /*
   console.groupCollapsed("ingredientsFiltered");
   console.log(ingredientsFiltered);
   console.groupEnd();
@@ -55,12 +55,13 @@ async function filterObj() {
   console.groupCollapsed("ustensilsFiltered");
   console.log(ustensilsFiltered);
   console.groupEnd();
+  */
 }
 async function init() {
-  console.log("init");
   filterObj();
   buildDropDowns();
   buildResults();
   doFocus();
+  search();
 }
 init();
