@@ -242,4 +242,8 @@ ul {
       -ms-flex: 0 0 60%;
           flex: 0 0 60%;
 }
+
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
 /*# sourceMappingURL=custom.css.map */
