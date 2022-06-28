@@ -1,6 +1,7 @@
 let ingredientsFiltered = new Array();
 let applianceFiltered = new Array();
 let ustensilsFiltered = new Array();
+let tags = new Array();
 
 async function buildDropDowns() {
   const dropDownsContainer = document.getElementById("dropdowns-container");
@@ -63,5 +64,6 @@ async function init() {
   buildResults();
   doFocus();
   search();
+  addListenerForTags();
 }
 init();
