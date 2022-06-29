@@ -218,12 +218,15 @@ ul {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 #cards-container .card {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 29%;
-          flex: 0 0 29%;
+      -ms-flex: 0 0 30%;
+          flex: 0 0 30%;
   background-color: #e1e1e1;
   border-radius: 5px;
 }
