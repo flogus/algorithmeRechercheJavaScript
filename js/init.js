@@ -2,6 +2,7 @@ let ingredientsFiltered = new Array();
 let applianceFiltered = new Array();
 let ustensilsFiltered = new Array();
 let tags = new Array();
+let results = new Array();
 
 async function buildDropDowns() {
   const dropDownsContainer = document.getElementById("dropdowns-container");
@@ -18,17 +19,50 @@ async function buildDropDowns() {
   dropDownsContainer.innerHTML += dropDownModelAppareils.getDropDown();
   dropDownsContainer.innerHTML += dropDownModelUstensiles.getDropDown();
 }
-async function buildResults() {
-  const cardsContainer = document.getElementById("cards-container");
-  cardsContainer.innerHTML = "";
 
-  recipes.forEach((element) => {
-    const cardModel = new Card(element);
-    cardsContainer.innerHTML += cardModel.buildCard();
-  });
+async function buildResults() {
+  if (mainSearch.value.length > 2 || mainSearch.value.length == 0) {
+    //clone recipes
+    let tempRecipes = [...recipes];
+
+    const cardsContainer = document.getElementById("cards-container");
+    cardsContainer.innerHTML = "";
+
+    if (mainSearch.value.length == 0) {
+      tempRecipes.forEach((element) => {
+        const cardModel = new Card(element);
+        cardsContainer.innerHTML += cardModel.buildCard();
+      });
+    } else {
+      tempRecipes.forEach((element, index) => {
+        const searchValue = mainSearch.value.toLowerCase();
+        const nameValue = element.name.toLowerCase();
+        const descriptionValue = element.description.toLowerCase();
+
+        element.ingredients.forEach((elementIng, index) => {
+          const ingredientsValue = elementIng.ingredient.toLowerCase();
+          if (ingredientsValue.search(searchValue) != -1) {
+            const cardModel = new Card(element);
+            cardsContainer.innerHTML += cardModel.buildCard();
+          }
+        });
+
+        if (
+          nameValue.search(searchValue) != -1 ||
+          descriptionValue.search(searchValue) != -1
+        ) {
+          const cardModel = new Card(element);
+          cardsContainer.innerHTML += cardModel.buildCard();
+        }
+      });
+    }
+  }
 }
 
-async function filterObj() {
+/**
+ * filter the recipes for the three dropdowns
+ */
+async function filterObjForDropdowns() {
   recipes.forEach(function (element) {
     let lesIngredients = element.ingredients;
     lesIngredients.forEach(function (ingredients) {
@@ -59,7 +93,7 @@ async function filterObj() {
   */
 }
 async function init() {
-  filterObj();
+  filterObjForDropdowns();
   buildDropDowns();
   buildResults();
   doFocus();
