@@ -3,6 +3,8 @@ let applianceFiltered = new Array();
 let ustensilsFiltered = new Array();
 let tags = new Array();
 let results = new Array();
+let tempRecipes = [...recipes];
+let filteredRecipes = new Array();
 
 async function buildDropDowns() {
   const dropDownsContainer = document.getElementById("dropdowns-container");
@@ -18,30 +20,47 @@ async function buildDropDowns() {
   dropDownsContainer.innerHTML += dropDownModelIngredient.getDropDown();
   dropDownsContainer.innerHTML += dropDownModelAppareils.getDropDown();
   dropDownsContainer.innerHTML += dropDownModelUstensiles.getDropDown();
+
+  const ingredientSearch = document.getElementById("searchingredient");
+
+  if (ingredientSearch) {
+    ingredientSearch.addEventListener(
+      "keyup",
+      function handleClick(event) {
+        if (this.value.length > 2) {
+          console.log("value :", this.value);
+        }
+      },
+      false
+    );
+  }
 }
 
 async function buildResults() {
   if (mainSearch.value.length > 2 || mainSearch.value.length == 0) {
-    //clone recipes
-    let tempRecipes = [...recipes];
-
     const cardsContainer = document.getElementById("cards-container");
     cardsContainer.innerHTML = "";
 
     if (mainSearch.value.length == 0) {
+      // If no data in the searchbox, we don't need to filter
       tempRecipes.forEach((element) => {
         const cardModel = new Card(element);
         cardsContainer.innerHTML += cardModel.buildCard();
       });
     } else {
+      const indexArray = new Array();
+      let totalFind = 0;
       tempRecipes.forEach((element, index) => {
         const searchValue = mainSearch.value.toLowerCase();
         const nameValue = element.name.toLowerCase();
         const descriptionValue = element.description.toLowerCase();
 
-        element.ingredients.forEach((elementIng, index) => {
+        element.ingredients.forEach((elementIng, indexIng) => {
           const ingredientsValue = elementIng.ingredient.toLowerCase();
           if (ingredientsValue.search(searchValue) != -1) {
+            indexArray.push(indexIng);
+            //console.log("ingredient", indexIng, element.name);
+            totalFind++;
             const cardModel = new Card(element);
             cardsContainer.innerHTML += cardModel.buildCard();
           }
@@ -51,12 +70,75 @@ async function buildResults() {
           nameValue.search(searchValue) != -1 ||
           descriptionValue.search(searchValue) != -1
         ) {
+          // if (!indexArray.includes(index)) {
+          //console.log("autre", index, element.name);
+          totalFind++;
           const cardModel = new Card(element);
           cardsContainer.innerHTML += cardModel.buildCard();
+          // }
         }
       });
     }
   }
+}
+
+function filterRecipes() {
+  let totalFind = 0;
+  console.clear();
+  const searchValue = mainSearch.value.toLowerCase();
+  console.log(">>> SEARCHING :", searchValue);
+
+  if (mainSearch.value.length > 2) {
+    filteredRecipes = [];
+    recipes.forEach(function callback(element, index) {
+      const nameValue = element.name.toLowerCase();
+      const descriptionValue = element.description.toLowerCase();
+
+      if (nameValue.search(searchValue) != -1) {
+        if (!filteredRecipes.includes(element)) {
+          filteredRecipes.push(element);
+          totalFind++;
+        }
+      }
+      if (descriptionValue.search(searchValue) != -1) {
+        if (!filteredRecipes.includes(element)) {
+          filteredRecipes.push(element);
+          totalFind++;
+        }
+      }
+
+      element.ingredients.forEach((elementIng) => {
+        const ingredientsValue = elementIng.ingredient.toLowerCase();
+        if (ingredientsValue.search(searchValue) != -1) {
+          if (!filteredRecipes.includes(element)) {
+            filteredRecipes.push(element);
+            totalFind++;
+          }
+        }
+      });
+    });
+  } else {
+    filteredRecipes = [...recipes];
+  }
+
+  document.getElementById("totalFind").innerHTML = "";
+  document.getElementById("totalFind").innerHTML = totalFind;
+
+  console.log("filteredRecipes :", filteredRecipes);
+}
+
+function renderRecipes() {
+  const cardsContainer = document.getElementById("cards-container");
+  cardsContainer.innerHTML = "";
+  filteredRecipes.forEach((element, index) => {
+    const cardModel = new Card(element);
+    cardsContainer.innerHTML += cardModel.buildCard();
+  });
+}
+
+function filterAndRenderResults() {
+  filterRecipes();
+  renderRecipes();
 }
 
 /**
@@ -95,9 +177,10 @@ async function filterObjForDropdowns() {
 async function init() {
   filterObjForDropdowns();
   buildDropDowns();
-  buildResults();
+  filterAndRenderResults();
   doFocus();
   search();
+  // searchDropDown();
   addListenerForTags();
 }
 init();

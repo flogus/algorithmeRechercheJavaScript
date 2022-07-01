@@ -11,6 +11,7 @@ class DropDown {
     this._class = this._type.toLowerCase().slice(0, -1);
     return this._class;
   };
+
   buildMenu = (data) => {
     let menu = "<div class='d-flex align-items-start flex-row flex-wrap'>";
     this._data.forEach(function (element) {
@@ -22,6 +23,7 @@ class DropDown {
     menu += "</div>";
     return menu;
   };
+
   getDropDown = (type) => {
     let template =
       "<div class='btn-group' id='" + this.getClassName() + "-container'>";
@@ -41,7 +43,7 @@ class DropDown {
       `<input type="search" id="search` +
       this.getClassName() +
       `" placeholder="Rechercher un ` +
-      this.getClassName() +
+      this.getName() +
       `"/>`;
     template += `
           </form>
