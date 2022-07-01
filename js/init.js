@@ -36,52 +36,6 @@ async function buildDropDowns() {
   }
 }
 
-async function buildResults() {
-  if (mainSearch.value.length > 2 || mainSearch.value.length == 0) {
-    const cardsContainer = document.getElementById("cards-container");
-    cardsContainer.innerHTML = "";
-
-    if (mainSearch.value.length == 0) {
-      // If no data in the searchbox, we don't need to filter
-      tempRecipes.forEach((element) => {
-        const cardModel = new Card(element);
-        cardsContainer.innerHTML += cardModel.buildCard();
-      });
-    } else {
-      const indexArray = new Array();
-      let totalFind = 0;
-      tempRecipes.forEach((element, index) => {
-        const searchValue = mainSearch.value.toLowerCase();
-        const nameValue = element.name.toLowerCase();
-        const descriptionValue = element.description.toLowerCase();
-
-        element.ingredients.forEach((elementIng, indexIng) => {
-          const ingredientsValue = elementIng.ingredient.toLowerCase();
-          if (ingredientsValue.search(searchValue) != -1) {
-            indexArray.push(indexIng);
-            //console.log("ingredient", indexIng, element.name);
-            totalFind++;
-            const cardModel = new Card(element);
-            cardsContainer.innerHTML += cardModel.buildCard();
-          }
-        });
-
-        if (
-          nameValue.search(searchValue) != -1 ||
-          descriptionValue.search(searchValue) != -1
-        ) {
-          // if (!indexArray.includes(index)) {
-          //console.log("autre", index, element.name);
-          totalFind++;
-          const cardModel = new Card(element);
-          cardsContainer.innerHTML += cardModel.buildCard();
-          // }
-        }
-      });
-    }
-  }
-}
-
 function filterRecipes() {
   let totalFind = 0;
   console.clear();
