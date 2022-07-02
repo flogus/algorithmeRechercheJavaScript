@@ -5,6 +5,7 @@ let tags = new Array();
 let results = new Array();
 let tempRecipes = [...recipes];
 let filteredRecipes = new Array();
+let totalFind = 0;
 
 async function buildDropDowns() {
   const dropDownsContainer = document.getElementById("dropdowns-container");
@@ -37,7 +38,6 @@ async function buildDropDowns() {
 }
 
 function filterRecipes() {
-  let totalFind = 0;
   console.clear();
   const searchValue = mainSearch.value.toLowerCase();
   console.log(">>> SEARCHING :", searchValue);
@@ -51,13 +51,11 @@ function filterRecipes() {
       if (nameValue.search(searchValue) != -1) {
         if (!filteredRecipes.includes(element)) {
           filteredRecipes.push(element);
-          totalFind++;
         }
       }
       if (descriptionValue.search(searchValue) != -1) {
         if (!filteredRecipes.includes(element)) {
           filteredRecipes.push(element);
-          totalFind++;
         }
       }
 
@@ -66,7 +64,6 @@ function filterRecipes() {
         if (ingredientsValue.search(searchValue) != -1) {
           if (!filteredRecipes.includes(element)) {
             filteredRecipes.push(element);
-            totalFind++;
           }
         }
       });
@@ -75,12 +72,19 @@ function filterRecipes() {
     filteredRecipes = [...recipes];
   }
 
-  document.getElementById("totalFind").innerHTML = "";
-  document.getElementById("totalFind").innerHTML = totalFind;
-
   console.log("filteredRecipes :", filteredRecipes);
 }
 
+function setTotalRecipes() {
+  document.getElementById("totalFind").innerHTML = "";
+  if (filteredRecipes.length > 1) {
+    document.getElementById("totalFind").innerHTML =
+      filteredRecipes.length + " recettes";
+  } else {
+    document.getElementById("totalFind").innerHTML =
+      filteredRecipes.length + " recette";
+  }
+}
 function renderRecipes() {
   const cardsContainer = document.getElementById("cards-container");
   cardsContainer.innerHTML = "";
@@ -88,6 +92,7 @@ function renderRecipes() {
     const cardModel = new Card(element);
     cardsContainer.innerHTML += cardModel.buildCard();
   });
+  setTotalRecipes();
 }
 
 function filterAndRenderResults() {
