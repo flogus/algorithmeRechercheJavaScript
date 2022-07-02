@@ -3,7 +3,6 @@ let applianceFiltered = new Array();
 let ustensilsFiltered = new Array();
 let tags = new Array();
 let results = new Array();
-let tempRecipes = [...recipes];
 let filteredRecipes = new Array();
 let totalFind = 0;
 
@@ -71,12 +70,10 @@ function filterAndRenderResults() {
 }
 
 async function init() {
-  filterObjForDropdowns();
-  buildDropDowns();
+  filterAndRenderDropdowns();
   filterAndRenderResults();
   doFocus();
   addEventSearch();
-  // searchDropDown();
   addListenerForTags();
 }
 init();

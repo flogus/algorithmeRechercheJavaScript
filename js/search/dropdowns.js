@@ -1,4 +1,4 @@
-async function buildDropDowns() {
+async function renderDropDowns() {
   const dropDownsContainer = document.getElementById("dropdowns-container");
   dropDownsContainer.innerHTML = "";
 
@@ -31,7 +31,7 @@ async function buildDropDowns() {
 /**
  * filter the recipes for the three dropdowns
  */
-async function filterObjForDropdowns() {
+async function filterDropdowns() {
   recipes.forEach(function (element) {
     let lesIngredients = element.ingredients;
     lesIngredients.forEach(function (ingredients) {
@@ -60,4 +60,9 @@ async function filterObjForDropdowns() {
     console.log(ustensilsFiltered);
     console.groupEnd();
     */
+}
+
+function filterAndRenderDropdowns() {
+  filterDropdowns();
+  renderDropDowns();
 }
