@@ -1,0 +1,30 @@
+#cards-container {
+  font-size: 16px;
+  font-weight: 300;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .card {
+    flex: 0 0 30%;
+    background-color: #e1e1e1;
+    border-radius: 5px;
+  }
+  img.card-img-top {
+    height: 140px;
+    background-color: #bab0b0;
+  }
+  .descriptions {
+    font-size: 11px;
+    > div:last-child {
+      flex: 0 0 60%;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #cards-container {
+    .card {
+      flex: 0 0 45%;
+    }
+  }
+}
