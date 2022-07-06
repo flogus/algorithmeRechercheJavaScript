@@ -1,9 +1,3 @@
-function renderDropDownIng() {
-  const dropDownMenuIngredient = new DropDown("Ingrédients", ingredientsList);
-  document.getElementById("dropDownMenu-ingredient").innerHTML =
-    dropDownMenuIngredient.buildMenu();
-}
-
 /**
  * filter the recipes for the three dropdowns
  */
@@ -28,17 +22,6 @@ async function filterDropdowns() {
       }
     });
   });
-  /*
-    console.groupCollapsed("ingredientsList");
-    console.log(ingredientsList);
-    console.groupEnd();
-    console.groupCollapsed("appareilList");
-    console.log(appareilList);
-    console.groupEnd();
-    console.groupCollapsed("ustensilesList");
-    console.log(ustensilesList);
-    console.groupEnd();
-    */
 }
 
 async function renderDropDowns() {
@@ -52,9 +35,43 @@ async function renderDropDowns() {
   dropDownsContainer.innerHTML += dropDownModelIngredient.getDropDown();
   dropDownsContainer.innerHTML += dropDownModelAppareils.getDropDown();
   dropDownsContainer.innerHTML += dropDownModelUstensiles.getDropDown();
+
+  dropDownSearchBox("ingredient");
+  dropDownSearchBox("appareil");
+  dropDownSearchBox("ustensile");
 }
 
 function filterAndRenderDropdowns() {
   filterDropdowns();
   renderDropDowns();
+}
+
+function dropDownSearchBox(type) {
+  const searchBox = document.getElementById("search" + type);
+  searchBox.addEventListener("keyup", function (e) {
+    searchList(searchBox.value, type);
+  });
+}
+
+function searchList(searchBoxValue, type) {
+  const dropContainerCollection = document.getElementById(
+    "dropDownMenu-" + type
+  ).firstElementChild.children;
+  console.log("dropContainerCollection", dropContainerCollection);
+
+  eval(type + "ListLow").forEach(function (element, index) {
+    //Not found then hide
+    if (searchBoxValue.length > 2) {
+      if (!element.includes(searchBoxValue)) {
+        if (dropContainerCollection[index] != null) {
+          console.log("add class", dropContainerCollection[index].classList);
+          dropContainerCollection[index].classList.add("d-none");
+        }
+      }
+    } else {
+      if (dropContainerCollection[index] != null) {
+        dropContainerCollection[index].classList.remove("d-none");
+      }
+    }
+  });
 }

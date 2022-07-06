@@ -25,8 +25,6 @@ function filterRecipes() {
     filteredRecipes = [];
     recipes.forEach(function callback(element) {
       searchTerms.forEach(function callback(term) {
-        console.log("term :", term);
-
         const nameValue = searchableWords(element.name);
         const descriptionValue = searchableWords(element.description);
 
