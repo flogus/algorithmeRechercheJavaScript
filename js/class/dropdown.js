@@ -45,12 +45,15 @@ class DropDown {
       `" placeholder="Rechercher un ` +
       this.getName() +
       `"/>`;
-    template += `
+    template +=
+      `
           </form>
         </div>
       </div>
     </div>
-    <div class="p-2 overflow-large">`;
+    <div id="dropDownMenu-` +
+      this.getClassName() +
+      `" class="p-2 overflow-large">`;
     template += this.buildMenu();
     template += "</div>";
     template += "</div></div>";

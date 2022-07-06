@@ -1,42 +1,85 @@
-let ingredientsFiltered = new Array();
-let applianceFiltered = new Array();
-let ustensilsFiltered = new Array();
+let ingredientList = new Array();
+let ingredientListLow = new Array();
+let appareilList = new Array();
+let appareilListLow = new Array();
+let ustensileList = new Array();
+let ustensileListLow = new Array();
 let tags = new Array();
 let results = new Array();
 let filteredRecipes = new Array();
 let totalFind = 0;
 
 function filterRecipes() {
-  console.clear();
-  const searchValue = mainSearch.value.toLowerCase();
+  // console.clear();
+  const searchTerms = new Array();
+  const searchValue = searchableWords(mainSearch.value);
   console.log(">>> SEARCHING :", searchValue);
-
+  if (tags.length > 0) {
+    searchTerms.push(...tags);
+  }
   if (mainSearch.value.length > 2) {
+    searchTerms.push(mainSearch.value);
+  }
+  console.log("searchTerms:", searchTerms);
+  if (mainSearch.value.length > 2 || searchTerms.length > 0) {
     filteredRecipes = [];
-    recipes.forEach(function callback(element, index) {
-      const nameValue = element.name.toLowerCase();
-      const descriptionValue = element.description.toLowerCase();
+    recipes.forEach(function callback(element) {
+      searchTerms.forEach(function callback(term) {
+        console.log("term :", term);
 
-      if (nameValue.search(searchValue) != -1) {
-        if (!filteredRecipes.includes(element)) {
-          filteredRecipes.push(element);
-        }
-      }
-      if (descriptionValue.search(searchValue) != -1) {
-        if (!filteredRecipes.includes(element)) {
-          filteredRecipes.push(element);
-        }
-      }
+        const nameValue = searchableWords(element.name);
+        const descriptionValue = searchableWords(element.description);
 
-      element.ingredients.forEach((elementIng) => {
-        const ingredientsValue = elementIng.ingredient.toLowerCase();
-        if (ingredientsValue.search(searchValue) != -1) {
+        if (nameValue.search(term) != -1) {
           if (!filteredRecipes.includes(element)) {
             filteredRecipes.push(element);
           }
         }
+        if (descriptionValue.search(term) != -1) {
+          if (!filteredRecipes.includes(element)) {
+            filteredRecipes.push(element);
+          }
+        }
+
+        element.ingredients.forEach((elementIng) => {
+          const ingredientsValue = searchableWords(elementIng.ingredient);
+          if (ingredientsValue.search(term) != -1) {
+            if (!filteredRecipes.includes(element)) {
+              filteredRecipes.push(element);
+            }
+          }
+        });
       });
     });
+
+    // Search tags
+    /*if (tags.length > 0) {
+      recipes.forEach(function callback(element, index) {
+        const nameValue = searchableWords(element.name);
+        const descriptionValue = searchableWords(element.description);
+
+        tags.forEach(function callback(tag) {
+          if (nameValue.includes(tag)) {
+            if (!filteredRecipes.includes(element)) {
+              filteredRecipes.push(element);
+            }
+          }
+          if (descriptionValue.includes(tag)) {
+            if (!filteredRecipes.includes(element)) {
+              filteredRecipes.push(element);
+            }
+          }
+          element.ingredients.forEach((elementIng) => {
+            const ingredientsValue = searchableWords(elementIng.ingredient);
+            if (ingredientsValue.search(searchValue) != -1) {
+              if (!filteredRecipes.includes(element)) {
+                filteredRecipes.push(element);
+              }
+            }
+          });
+        });
+      });
+    }*/
   } else {
     filteredRecipes = [...recipes];
   }
@@ -54,10 +97,11 @@ function setTotalRecipes() {
       filteredRecipes.length + " recette";
   }
 }
+
 function renderRecipes() {
   const cardsContainer = document.getElementById("cards-container");
   cardsContainer.innerHTML = "";
-  filteredRecipes.forEach((element, index) => {
+  filteredRecipes.forEach((element) => {
     const cardModel = new Card(element);
     cardsContainer.innerHTML += cardModel.buildCard();
   });
@@ -65,6 +109,7 @@ function renderRecipes() {
 }
 
 function filterAndRenderResults() {
+  console.log("filterAndRenderResults");
   filterRecipes();
   renderRecipes();
 }

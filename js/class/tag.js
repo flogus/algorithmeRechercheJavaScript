@@ -14,4 +14,7 @@ class Tag {
       </div>`;
     return template;
   }
+  addRemove() {
+    console.log("addRemove :", this);
+  }
 }
