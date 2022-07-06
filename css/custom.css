@@ -120,6 +120,10 @@ button.btn {
 .dropdown-menu.show .flex-33 a {
   color: #fff;
   font-size: 12px;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .dropdown-item form {
