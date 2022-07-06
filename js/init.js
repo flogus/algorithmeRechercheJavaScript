@@ -10,17 +10,17 @@ let filteredRecipes = new Array();
 let totalFind = 0;
 
 function filterRecipes() {
-  // console.clear();
   const searchTerms = new Array();
   const searchValue = searchableWords(mainSearch.value);
-  console.log(">>> SEARCHING :", searchValue);
+
+  // Fill searchTerms Array
   if (tags.length > 0) {
     searchTerms.push(...tags);
   }
   if (mainSearch.value.length > 2) {
     searchTerms.push(mainSearch.value);
   }
-  console.log("searchTerms:", searchTerms);
+
   if (mainSearch.value.length > 2 || searchTerms.length > 0) {
     filteredRecipes = [];
     recipes.forEach(function callback(element) {
@@ -109,7 +109,6 @@ function renderRecipes() {
 }
 
 function filterAndRenderResults() {
-  console.log("filterAndRenderResults");
   filterRecipes();
   renderRecipes();
 }

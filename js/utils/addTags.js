@@ -62,15 +62,11 @@ function removeCurrentTag() {
   const allTagContainer = document.querySelectorAll("div.alert");
   allTagContainer.forEach((tag) => {
     const tagLow = searchableWords(tag.textContent);
-    console.log("tag", tagLow);
-    console.log(tags.includes(tagLow));
-    console.log(tag.children[0]);
     tag.children[0].setAttribute("data-text", tagLow);
     tag.children[0].addEventListener("click", (e) => {
       const position = tags.indexOf(
         e.path[0].attributes["data-text"].nodeValue
       );
-      console.log("position", position);
       if (position != -1) {
         tags.splice(position, 1);
         filterAndRenderResults();
