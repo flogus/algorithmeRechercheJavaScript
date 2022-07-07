@@ -20,7 +20,7 @@
     <link href="css/custom.css" rel="stylesheet" />
   </head>
   <body>
-    <main role="main" class="container">
+    <main class="container">
       <div class="row">
         <div class="col">
           <div class="d-flex justify-content-center" id="logo-container">
@@ -48,59 +48,15 @@
       </div>
       <div class="row">
         <div class="col" id="dropdowns-container">
-          <div class="btn-group">
-            <button
-              type="button"
-              class="btn bg-ingredient dropdown-toggle"
-              data-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Ingredients
-            </button>
-            <div class="dropdown-menu bg-ingredient">
-              <div class="dropdown-item p-2" href="#">
-                <div class="col">
-                  <div class="row">
-                    <form>
-                      <input
-                        type="search"
-                        placeholder="Rechercher un ingrédient"
-                      />
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <ul class="p-2">
-                    <li>Lait de coco</li>
-                    <li>Sucre</li>
-                    <li>Concombre</li>
-                  </ul>
-                </div>
-                <div class="col">
-                  <ul class="p-2">
-                    <li>Lait de coco</li>
-                    <li>Sucre</li>
-                    <li>Concombre</li>
-                  </ul>
-                </div>
-                <div class="col">
-                  <ul class="p-2">
-                    <li>Lait de coco</li>
-                    <li>Sucre</li>
-                    <li>Concombre</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!-- filled by the renderDropDowns() -->
         </div>
         <span id="totalFind" class="pr-3 pt-2"></span>
       </div>
       <div class="row">
         <div class="col p-0">
-          <div id="cards-container"></div>
+          <div id="cards-container">
+            <!-- filled by the renderRecipes() -->
+          </div>
         </div>
       </div>
     </main>
