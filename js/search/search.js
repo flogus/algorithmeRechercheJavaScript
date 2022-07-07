@@ -53,10 +53,15 @@ function filterRecipes() {
 function renderRecipes() {
   const cardsContainer = document.getElementById("cards-container");
   cardsContainer.innerHTML = "";
-  filteredRecipes.forEach((element) => {
-    const cardModel = new Card(element);
-    cardsContainer.innerHTML += cardModel.buildCard();
-  });
+  if (filteredRecipes.length > 0) {
+    filteredRecipes.forEach((element) => {
+      const cardModel = new Card(element);
+      cardsContainer.innerHTML += cardModel.buildCard();
+    });
+  } else {
+    cardsContainer.innerHTML =
+      '<div class="p-2 w-100 text-center">Aucune recette ne correspond à vos critères</div>';
+  }
   setTotalRecipes();
 }
 
