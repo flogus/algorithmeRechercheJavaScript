@@ -1,3 +1,6 @@
+/**
+ * Focus on the searchboxes
+ */
 function doFocus() {
   $("#ingredient-container").on("show.bs.dropdown", function () {
     setTimeout(() => {

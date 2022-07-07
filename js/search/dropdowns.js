@@ -41,11 +41,6 @@ async function renderDropDowns() {
   dropDownSearchBox("ustensile");
 }
 
-function filterAndRenderDropdowns() {
-  filterDropdowns();
-  renderDropDowns();
-}
-
 function dropDownSearchBox(type) {
   const searchBox = document.getElementById("search" + type);
   searchBox.addEventListener("keyup", function (e) {
@@ -57,14 +52,12 @@ function searchList(searchBoxValue, type) {
   const dropContainerCollection = document.getElementById(
     "dropDownMenu-" + type
   ).firstElementChild.children;
-  console.log("dropContainerCollection", dropContainerCollection);
 
   eval(type + "ListLow").forEach(function (element, index) {
     //Not found then hide
     if (searchBoxValue.length > 2) {
       if (!element.includes(searchBoxValue)) {
         if (dropContainerCollection[index] != null) {
-          console.log("add class", dropContainerCollection[index].classList);
           dropContainerCollection[index].classList.add("d-none");
         }
       }
@@ -74,4 +67,9 @@ function searchList(searchBoxValue, type) {
       }
     }
   });
+}
+
+function filterAndRenderDropdowns() {
+  filterDropdowns();
+  renderDropDowns();
 }

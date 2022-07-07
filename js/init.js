@@ -81,8 +81,6 @@ function filterRecipes() {
   } else {
     filteredRecipes = [...recipes];
   }
-
-  console.log("filteredRecipes :", filteredRecipes);
 }
 
 function setTotalRecipes() {
