@@ -45,35 +45,6 @@ function filterRecipes() {
         });
       });
     });
-
-    // Search tags
-    /*if (tags.length > 0) {
-      recipes.forEach(function callback(element, index) {
-        const nameValue = searchableWords(element.name);
-        const descriptionValue = searchableWords(element.description);
-
-        tags.forEach(function callback(tag) {
-          if (nameValue.includes(tag)) {
-            if (!filteredRecipes.includes(element)) {
-              filteredRecipes.push(element);
-            }
-          }
-          if (descriptionValue.includes(tag)) {
-            if (!filteredRecipes.includes(element)) {
-              filteredRecipes.push(element);
-            }
-          }
-          element.ingredients.forEach((elementIng) => {
-            const ingredientsValue = searchableWords(elementIng.ingredient);
-            if (ingredientsValue.search(searchValue) != -1) {
-              if (!filteredRecipes.includes(element)) {
-                filteredRecipes.push(element);
-              }
-            }
-          });
-        });
-      });
-    }*/
   } else {
     filteredRecipes = [...recipes];
   }
