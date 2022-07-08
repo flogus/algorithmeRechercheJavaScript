@@ -1,13 +1,15 @@
 let mainSearch = document.getElementById("mainsearch");
 
-function addEventSearch() {
+function addListenerForMainSearch() {
   mainSearch.addEventListener("keyup", filterAndRenderResults, false);
   mainSearch.addEventListener("change", filterAndRenderResults, false);
 }
 
+/**
+ * filter the recipes
+ */
 function filterRecipes() {
   const searchTerms = new Array();
-  const searchValue = searchableWords(mainSearch.value);
 
   // Fill searchTerms Array
   if (tags.length > 0) {
@@ -50,6 +52,9 @@ function filterRecipes() {
   }
 }
 
+/**
+ * Render the filteredRecipes with the Card Class
+ */
 function renderRecipes() {
   const cardsContainer = document.getElementById("cards-container");
   cardsContainer.innerHTML = "";

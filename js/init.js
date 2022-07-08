@@ -24,7 +24,7 @@ async function init() {
   filterAndRenderDropdowns();
   filterAndRenderResults();
   doFocus();
-  addEventSearch();
+  addListenerForMainSearch();
   addListenerForTags();
 }
 init();

@@ -24,6 +24,9 @@ async function filterDropdowns() {
   });
 }
 
+/**
+ * Render each dropdowns with the DropDown Class
+ */
 async function renderDropDowns() {
   const dropDownsContainer = document.getElementById("dropdowns-container");
   dropDownsContainer.innerHTML = "";
