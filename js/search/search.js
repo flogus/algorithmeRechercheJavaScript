@@ -7,9 +7,10 @@ function addListenerForMainSearch() {
 
 /**
  * filter the recipes
+ * @returns refilteredRecipes
  */
-function filterRecipes() {
-  const searchTerms = new Array();
+function getfilterRecipes() {
+  let searchTerms = new Array();
 
   // Fill searchTerms Array
   if (tags.length > 0) {
@@ -19,37 +20,40 @@ function filterRecipes() {
     searchTerms.push(mainSearch.value);
   }
 
+  let refilteredRecipes = new Array();
+
   if (mainSearch.value.length > 2 || searchTerms.length > 0) {
-    filteredRecipes = [];
     recipes.forEach(function callback(element) {
       searchTerms.forEach(function callback(term) {
         const nameValue = searchableWords(element.name);
         const descriptionValue = searchableWords(element.description);
 
         if (nameValue.search(term) != -1) {
-          if (!filteredRecipes.includes(element)) {
-            filteredRecipes.push(element);
+          if (!refilteredRecipes.includes(searchableWords(element))) {
+            refilteredRecipes.push(element);
           }
         }
         if (descriptionValue.search(term) != -1) {
-          if (!filteredRecipes.includes(element)) {
-            filteredRecipes.push(element);
+          if (!refilteredRecipes.includes(searchableWords(element))) {
+            refilteredRecipes.push(element);
           }
         }
 
         element.ingredients.forEach((elementIng) => {
           const ingredientsValue = searchableWords(elementIng.ingredient);
           if (ingredientsValue.search(term) != -1) {
-            if (!filteredRecipes.includes(element)) {
-              filteredRecipes.push(element);
+            if (!refilteredRecipes.includes(element)) {
+              refilteredRecipes.push(element);
             }
           }
         });
       });
     });
   } else {
-    filteredRecipes = [...recipes];
+    refilteredRecipes = [...recipes];
   }
+
+  return refilteredRecipes;
 }
 
 /**
@@ -58,8 +62,12 @@ function filterRecipes() {
 function renderRecipes() {
   const cardsContainer = document.getElementById("cards-container");
   cardsContainer.innerHTML = "";
-  if (filteredRecipes.length > 0) {
-    filteredRecipes.forEach((element) => {
+
+  let refilteredRecipes = getfilterRecipes();
+  console.log("renderRecipes refilteredRecipes", refilteredRecipes);
+
+  if (refilteredRecipes.length > 0) {
+    refilteredRecipes.forEach((element) => {
       const cardModel = new Card(element);
       cardsContainer.innerHTML += cardModel.buildCard();
     });
@@ -71,6 +79,6 @@ function renderRecipes() {
 }
 
 function filterAndRenderResults() {
-  filterRecipes();
+  getfilterRecipes();
   renderRecipes();
 }

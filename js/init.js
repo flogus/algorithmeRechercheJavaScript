@@ -1,3 +1,4 @@
+let dropDowns = new Array("Ingrédient", "Appareil", "Ustensile");
 let ingredientList = new Array();
 let ingredientListLow = new Array();
 let appareilList = new Array();
@@ -11,12 +12,13 @@ let totalFind = 0;
 
 function setTotalRecipes() {
   document.getElementById("totalFind").innerHTML = "";
-  if (filteredRecipes.length > 1) {
+  const currentRecipes = getfilterRecipes();
+  if (currentRecipes.length > 1) {
     document.getElementById("totalFind").innerHTML =
-      filteredRecipes.length + " recettes";
+      currentRecipes.length + " recettes";
   } else {
     document.getElementById("totalFind").innerHTML =
-      filteredRecipes.length + " recette";
+      currentRecipes.length + " recette";
   }
 }
 
