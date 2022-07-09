@@ -29,12 +29,14 @@ function getfilterRecipes() {
         const descriptionValue = searchableWords(element.description);
 
         if (nameValue.search(term) != -1) {
-          if (!refilteredRecipes.includes(searchableWords(element))) {
+          if (!refilteredRecipes.includes(element)) {
+            console.log("push name:", nameValue);
             refilteredRecipes.push(element);
           }
         }
         if (descriptionValue.search(term) != -1) {
-          if (!refilteredRecipes.includes(searchableWords(element))) {
+          if (!refilteredRecipes.includes(element)) {
+            console.log("push description:", nameValue);
             refilteredRecipes.push(element);
           }
         }
@@ -43,6 +45,7 @@ function getfilterRecipes() {
           const ingredientsValue = searchableWords(elementIng.ingredient);
           if (ingredientsValue.search(term) != -1) {
             if (!refilteredRecipes.includes(element)) {
+              console.log("push ingredients:", nameValue);
               refilteredRecipes.push(element);
             }
           }
