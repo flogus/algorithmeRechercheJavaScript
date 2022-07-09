@@ -18,21 +18,27 @@ class Card {
 
     card += `<div class="flex-row d-flex descriptions">`;
     card += `<div>`;
-    card += `<ul class="p-2">`;
-    for (const element of this._ingredients) {
-      card += `<li><span class='font-weight-bold'>`;
-      card += element["ingredient"];
-      card += `:</span> <span>`;
-      if (element["quantity"] !== undefined) {
-        card += element["quantity"];
+
+    if (this._ingredients !== undefined) {
+      card += `<ul class="p-2">`;
+      for (let ingredient of Object.keys(this._ingredients)) {
+        var ingredients = this._ingredients[ingredient];
+
+        card += `<li><span class='font-weight-bold'>`;
+        card += ingredients.ingredient;
+        card += `:</span> <span>`;
+        if (ingredients.quantity !== undefined) {
+          card += ingredients.quantity;
+        }
+        if (ingredients.unit !== undefined) {
+          card += ingredients.unit;
+        }
+        card += `</span>`;
+        card += `</li>`;
       }
-      if (element["unit"] !== undefined) {
-        card += element["unit"];
-      }
-      card += `</span>`;
-      card += `</li>`;
+      card += `</ul>`;
     }
-    card += `</ul>`;
+
     card += `</div>`;
 
     card += `<div class="p-2 overflow-medium">${this._description}</div>`;
