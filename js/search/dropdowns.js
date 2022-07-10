@@ -31,17 +31,15 @@ async function renderDropDowns() {
   const dropDownsContainer = document.getElementById("dropdowns-container");
   dropDownsContainer.innerHTML = "";
 
-  let dropDownModelIngredient = new DropDown("Ingrédients", ingredientList);
-  let dropDownModelAppareils = new DropDown("Appareils", appareilList);
-  let dropDownModelUstensiles = new DropDown("Ustensiles", ustensileList);
-
-  dropDownsContainer.innerHTML += dropDownModelIngredient.getDropDown();
-  dropDownsContainer.innerHTML += dropDownModelAppareils.getDropDown();
-  dropDownsContainer.innerHTML += dropDownModelUstensiles.getDropDown();
-
-  dropDownSearchBox("ingredient");
-  dropDownSearchBox("appareil");
-  dropDownSearchBox("ustensile");
+  dropDowns.forEach((element) => {
+    console.log("Dropdown : ", element);
+    let dropDown = new DropDown(
+      element,
+      eval(searchableWords(element) + "List")
+    );
+    dropDownsContainer.innerHTML += dropDown.getDropDown();
+    dropDownSearchBox(searchableWords(element));
+  });
 }
 
 function dropDownSearchBox(type) {

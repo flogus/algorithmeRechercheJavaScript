@@ -4,11 +4,11 @@ class DropDown {
     this._data = data;
   }
   getClassName = () => {
-    this._class = this._type.toLowerCase().slice(0, -1).replaceAll("é", "e");
+    this._class = this._type.toLowerCase().replaceAll("é", "e");
     return this._class;
   };
   getName = () => {
-    this._class = this._type.toLowerCase().slice(0, -1);
+    this._class = this._type.toLowerCase();
     return this._class;
   };
 
@@ -31,7 +31,7 @@ class DropDown {
     template += this.getClassName();
     template += ` dropdown-toggle" data-toggle="dropdown" aria-expanded="false">`;
     template += this._type;
-    template += `</button>`;
+    template += `s</button>`;
     template += `<div class="dropdown-menu bg-`;
     template += this.getClassName();
     template += `">
