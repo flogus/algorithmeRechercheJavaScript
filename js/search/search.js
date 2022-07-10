@@ -67,7 +67,6 @@ function renderRecipes() {
   cardsContainer.innerHTML = "";
 
   let filteredRecipes = getFilterRecipes();
-  console.log("renderRecipes filteredRecipes", filteredRecipes);
 
   if (filteredRecipes.length > 0) {
     filteredRecipes.forEach((element) => {

@@ -55,11 +55,11 @@ function clickAddTag() {
 function renderTag(type, label) {
   const currentTag = new Tag(type, label);
   tagsContainer.innerHTML = tagsContainer.innerHTML + currentTag.getTag();
-  //currentTag.addRemove();
+  currentTag.addRemove();
 }
 
 function removeCurrentTag() {
-  console.log("removeCurrentTag");
+  //console.log("function removeCurrentTag");
   const allTagContainer = document.querySelectorAll("div.alert");
   allTagContainer.forEach((tag) => {
     const tagLow = searchableWords(tag.textContent);

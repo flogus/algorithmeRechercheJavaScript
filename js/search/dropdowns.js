@@ -59,8 +59,8 @@ async function renderDropDowns() {
 
   dropDowns.forEach((element, index) => {
     let currentList = getFilterDropDowns();
-    console.groupCollapsed("Dropdown : ", index, currentList[index]);
-    console.groupEnd();
+    // console.groupCollapsed("Dropdown : ", index, currentList[index]);
+    // console.groupEnd();
 
     let dropDown = new DropDown(element, currentList[index]);
     dropDownsContainer.innerHTML += dropDown.getDropDown();
