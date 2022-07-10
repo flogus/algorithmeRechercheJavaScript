@@ -9,7 +9,7 @@ function addListenerForMainSearch() {
  * filter the recipes
  * @returns filteredRecipes
  */
-function getfilterRecipes() {
+function getFilterRecipes() {
   let searchTerms = new Array();
 
   // Fill searchTerms Array
@@ -66,7 +66,7 @@ function renderRecipes() {
   const cardsContainer = document.getElementById("cards-container");
   cardsContainer.innerHTML = "";
 
-  let filteredRecipes = getfilterRecipes();
+  let filteredRecipes = getFilterRecipes();
   console.log("renderRecipes filteredRecipes", filteredRecipes);
 
   if (filteredRecipes.length > 0) {
@@ -82,6 +82,6 @@ function renderRecipes() {
 }
 
 function filterAndRenderResults() {
-  getfilterRecipes();
+  getFilterRecipes();
   renderRecipes();
 }
