@@ -7,8 +7,6 @@ let ustensileList = new Array();
 let ustensileListLow = new Array();
 let tags = new Array();
 let results = new Array();
-// let filteredRecipes = new Array();
-// let totalFind = 0;
 
 function setTotalRecipes() {
   const totalFindId = document.getElementById("totalFind");
