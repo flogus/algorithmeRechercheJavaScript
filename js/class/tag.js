@@ -3,6 +3,11 @@ class Tag {
     this._type = type;
     this._label = label;
   }
+  init() {
+    console.log("Init Tag");
+    this.getTag();
+    this.addRemove();
+  }
   getTag() {
     let template =
       `<div class="alert bg-` +
@@ -15,6 +20,6 @@ class Tag {
     return template;
   }
   addRemove() {
-    console.log("addRemove :", this);
+    console.log("addRemove :");
   }
 }
