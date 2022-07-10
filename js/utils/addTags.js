@@ -43,7 +43,8 @@ function clickAddTag() {
     //Remove from currentList
     currentList.splice(indexPosition, 1);
   }
-  if (filteredRecipes.includes(tagCurrentLow)) {
+  const refilteredRecipes = getfilterRecipes();
+  if (refilteredRecipes.includes(tagCurrentLow)) {
     console.log("Found in filtered list");
   }
   removeCurrentTag();
