@@ -1,10 +1,4 @@
 let dropDowns = new Array("Ingrédient", "Appareil", "Ustensile");
-let ingredientList = new Array();
-let ingredientListLow = new Array();
-let appareilList = new Array();
-let appareilListLow = new Array();
-let ustensileList = new Array();
-let ustensileListLow = new Array();
 let tags = new Array();
 let results = new Array();
 

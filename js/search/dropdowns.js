@@ -1,27 +1,53 @@
+let ingredientList = new Array();
+let ingredientListLow = new Array();
+let appareilList = new Array();
+let appareilListLow = new Array();
+let ustensileList = new Array();
+let ustensileListLow = new Array();
+
 /**
- * filter the recipes for the three dropdowns
+ * Filters recipes for the dropdowns
+ * return a list of arrays
+ * @returns filteredListDropDowns
  */
-async function filterDropdowns() {
+function getFilterDropDowns() {
+  ingredientArr = new Array();
+  ingredientArrLow = new Array();
+  appareilArr = new Array();
+  appareilArrLow = new Array();
+  ustensileArr = new Array();
+  ustensileArrLow = new Array();
+  filteredListDropDowns = new Array();
   recipes.forEach(function (element) {
+    // console.log("element", element);
     let lesIngredients = element.ingredients;
     lesIngredients.forEach(function (ingredients) {
-      if (!ingredientList.includes(ingredients.ingredient)) {
-        ingredientList.push(ingredients.ingredient);
-        ingredientListLow.push(searchableWords(ingredients.ingredient));
+      if (!ingredientArr.includes(ingredients.ingredient)) {
+        ingredientArr.push(ingredients.ingredient);
+        ingredientArrLow.push(searchableWords(ingredients.ingredient));
       }
     });
-    if (!appareilList.includes(element.appliance)) {
-      appareilList.push(element.appliance);
-      appareilListLow.push(searchableWords(element.appliance));
+    if (!appareilArr.includes(element.appliance)) {
+      appareilArr.push(element.appliance);
+      appareilArrLow.push(searchableWords(element.appliance));
     }
     let lesUstensiles = element.ustensils;
     lesUstensiles.forEach(function (lesUstensiles) {
-      if (!ustensileList.includes(lesUstensiles)) {
-        ustensileList.push(lesUstensiles);
-        ustensileListLow.push(searchableWords(lesUstensiles));
+      if (!ustensileArr.includes(lesUstensiles)) {
+        ustensileArr.push(lesUstensiles);
+        ustensileArrLow.push(searchableWords(lesUstensiles));
       }
     });
   });
+  filteredListDropDowns.push(
+    ingredientArr,
+    appareilArr,
+    ustensileArr,
+    ingredientArrLow,
+    appareilArrLow,
+    ustensileArrLow
+  );
+  return filteredListDropDowns;
 }
 
 /**
@@ -31,12 +57,12 @@ async function renderDropDowns() {
   const dropDownsContainer = document.getElementById("dropdowns-container");
   dropDownsContainer.innerHTML = "";
 
-  dropDowns.forEach((element) => {
-    console.log("Dropdown : ", element);
-    let dropDown = new DropDown(
-      element,
-      eval(searchableWords(element) + "List")
-    );
+  dropDowns.forEach((element, index) => {
+    let currentList = getFilterDropDowns();
+    console.groupCollapsed("Dropdown : ", index, currentList[index]);
+    console.groupEnd();
+
+    let dropDown = new DropDown(element, currentList[index]);
     dropDownsContainer.innerHTML += dropDown.getDropDown();
     dropDownSearchBox(searchableWords(element));
   });
@@ -71,6 +97,6 @@ function searchList(searchBoxValue, type) {
 }
 
 function filterAndRenderDropdowns() {
-  filterDropdowns();
+  getFilterDropDowns();
   renderDropDowns();
 }
