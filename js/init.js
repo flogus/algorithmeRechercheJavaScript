@@ -7,18 +7,17 @@ let ustensileList = new Array();
 let ustensileListLow = new Array();
 let tags = new Array();
 let results = new Array();
-let filteredRecipes = new Array();
-let totalFind = 0;
+// let filteredRecipes = new Array();
+// let totalFind = 0;
 
 function setTotalRecipes() {
-  document.getElementById("totalFind").innerHTML = "";
+  const totalFindId = document.getElementById("totalFind");
+  totalFindId.innerHTML = "";
   const currentRecipes = getfilterRecipes();
   if (currentRecipes.length > 1) {
-    document.getElementById("totalFind").innerHTML =
-      currentRecipes.length + " recettes";
+    totalFindId.innerHTML = currentRecipes.length + " recettes";
   } else {
-    document.getElementById("totalFind").innerHTML =
-      currentRecipes.length + " recette";
+    totalFindId.innerHTML = currentRecipes.length + " recette";
   }
 }
 
