@@ -139,6 +139,7 @@ function getSearchList(type) {
         recipes.forEach(function (recipe) {
           Object.entries(recipe).forEach((entry) => {
             const [key, value] = entry;
+
             if (typeName == "ingredient") {
               if (key == "ingredients") {
                 value.forEach(function (val) {
@@ -153,6 +154,30 @@ function getSearchList(type) {
                     });
                   }
                 });
+              }
+            }
+            if (typeName == "ustensile") {
+              if (key == "ustensils") {
+                value.forEach(function (val) {
+                  // if found once add all ustensiles
+                  if (searchableWords(val).includes(element)) {
+                    value.forEach(function (val) {
+                      if (!tempListLow.includes(searchableWords(val))) {
+                        tempListLow.push(searchableWords(val));
+                      }
+                    });
+                  }
+                });
+              }
+            }
+            if (typeName == "appareil") {
+              if (key == "appliance") {
+                // if found add to appareils
+                if (searchableWords(value).includes(element)) {
+                  if (!tempListLow.includes(searchableWords(value))) {
+                    tempListLow.push(searchableWords(value));
+                  }
+                }
               }
             }
           });
