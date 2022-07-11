@@ -40,7 +40,7 @@ class DropDown {
         <div class="row p-1">
           <form>`;
     template +=
-      `<input type="search" id="search` +
+      `<input type="search" id="search-` +
       this.getClassName() +
       `" placeholder="Rechercher un ` +
       this.getName() +
