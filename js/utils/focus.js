@@ -4,17 +4,17 @@
 function doFocus() {
   $("#ingredient-container").on("show.bs.dropdown", function () {
     setTimeout(() => {
-      $("#searchingredient").focus();
+      $("#search-ingredient").focus();
     }, 0);
   });
   $("#appareil-container").on("show.bs.dropdown", function () {
     setTimeout(() => {
-      $("#searchappareil").focus();
+      $("#search-appareil").focus();
     }, 0);
   });
   $("#ustensile-container").on("show.bs.dropdown", function () {
     setTimeout(() => {
-      $("#searchustensile").focus();
+      $("#search-ustensile").focus();
     }, 0);
   });
   setTimeout(() => {
