@@ -22,6 +22,8 @@ function addListenerForTags() {
 }
 
 function clickAddTag() {
+  console.log("clickAddTag", this);
+  this.parentElement.classList.add("d-none");
   const currentType =
     this.parentElement.parentElement.parentElement.id.split("-")[1];
   const tagCurrentValue = this.innerHTML;
