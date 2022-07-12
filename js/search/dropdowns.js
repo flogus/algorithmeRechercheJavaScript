@@ -59,27 +59,21 @@ async function renderDropDowns() {
 
   dropDowns.forEach((element, index) => {
     let currentList = getFilterDropDowns();
-    // console.groupCollapsed("Dropdown : ", index, currentList[index]);
-    // console.groupEnd();
-
     let dropDown = new DropDown(element, currentList[index]);
     dropDownsContainer.innerHTML += dropDown.getDropDown();
     setTimeout(() => {
       dropDownSearchBox("search-" + searchableWords(element));
     }, 100);
   });
-  // dropDownSearchBoxes();
 }
 function dropDownSearchBox(type) {
   var searchBoxId = document.getElementById(type);
   searchBoxId.addEventListener("keyup", function (e) {
-    console.log(e.key);
     renderSearchList(type);
   });
 }
 function dropDownSearchBoxes() {
   // let searchId = "search-" + type;
-
   document
     .getElementById("search-ustensile")
     .addEventListener("keyup", function (e) {
@@ -98,14 +92,13 @@ function dropDownSearchBoxes() {
       console.log("KeyUp", e.key);
       //searchList(searchBox.value, type);
     });
-
-  // var ser = "search-ingredient";
-  // var searchBox2 = document.getElementById(ser);
-  // searchBox2.addEventListener("keyup", function (e) {
-  //   console.log("keyup", e.key);
-  // });
 }
 
+/**
+ * return a list of found elements
+ * @param {*} type
+ * @returns tempListLow
+ */
 function getSearchList(type) {
   var searchBoxValue = document.getElementById(type).value;
   var typeName = type.split("-").pop();
@@ -115,6 +108,7 @@ function getSearchList(type) {
   ).firstElementChild.children;
 
   let listLow = "";
+  let tempListLow = new Array();
   if (typeName == "ingredient") {
     listLow = getFilterDropDowns()[3];
   }
@@ -124,22 +118,16 @@ function getSearchList(type) {
   if (typeName == "ustensile") {
     listLow = getFilterDropDowns()[5];
   }
-  // console.log("listLow", listLow);
-  let tempListLow = new Array();
 
   // Loop on every elemts of the current list (ingredient, appareil or ustensile)
   eval(listLow).forEach(function (element, index) {
-    //Not found then hide
     if (searchBoxValue.length > 2) {
       // Is the searchBoxValue is in the list
       if (element.includes(searchBoxValue)) {
-        console.info("FOUND", index, element, searchBoxValue);
-
         // Search in recipes the ingredient of the following element
         recipes.forEach(function (recipe) {
           Object.entries(recipe).forEach((entry) => {
             const [key, value] = entry;
-
             if (typeName == "ingredient") {
               if (key == "ingredients") {
                 value.forEach(function (val) {
@@ -189,14 +177,12 @@ function getSearchList(type) {
       }
     }
   });
-  console.info("tempListLow", tempListLow);
+  // console.info("tempListLow", tempListLow);
   return tempListLow;
 }
 
 function renderSearchList(type) {
   var searchBoxValue = document.getElementById(type).value;
-
-  console.log("type", type);
   var typeName = type.split("-").pop();
   const currentList = getSearchList(type);
 
