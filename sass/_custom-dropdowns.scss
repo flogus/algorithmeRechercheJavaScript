@@ -47,11 +47,13 @@ button.btn {
   min-width: 500px;
   .flex-33 {
     flex: 0 0 33%;
+    display: flex;
     a {
       color: #fff;
       font-size: 12px;
       width: 100%;
       display: inline-flex;
+      padding: 3px 0;
     }
   }
 }
