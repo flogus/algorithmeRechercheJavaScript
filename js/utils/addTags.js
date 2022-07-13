@@ -33,7 +33,7 @@ function clickAddTag() {
     renderTag(currentType, tagCurrentValue);
   }
 
-  const currentList = eval(currentType + "ListLow");
+  const currentList = eval(currentType + "ArrLow");
   // Seach in currentList if found tag
   if (currentList.includes(tagCurrentLow)) {
     //Remove from HTML
@@ -61,7 +61,6 @@ function renderTag(type, label) {
 }
 
 function removeCurrentTag() {
-  //console.log("function removeCurrentTag");
   const allTagContainer = document.querySelectorAll("div.alert");
   allTagContainer.forEach((tag) => {
     const tagLow = searchableWords(tag.textContent);
@@ -70,6 +69,7 @@ function removeCurrentTag() {
       const position = tags.indexOf(
         e.path[0].attributes["data-text"].nodeValue
       );
+      console.log("position", position);
       if (position != -1) {
         tags.splice(position, 1);
         filterAndRenderResults();

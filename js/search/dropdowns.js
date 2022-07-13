@@ -1,10 +1,3 @@
-let ingredientList = new Array();
-let ingredientListLow = new Array();
-let appareilList = new Array();
-let appareilListLow = new Array();
-let ustensileList = new Array();
-let ustensileListLow = new Array();
-
 /**
  * Filters recipes for the dropdowns
  * return a list of arrays
