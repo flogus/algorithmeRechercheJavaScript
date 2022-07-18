@@ -21,6 +21,5 @@ async function init() {
   filterAndRenderResults();
   doFocus();
   addListenerForMainSearch();
-  addListenerForTags();
 }
 init();

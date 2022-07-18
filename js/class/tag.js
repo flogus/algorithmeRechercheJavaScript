@@ -20,6 +20,6 @@ class Tag {
     return template;
   }
   addRemove() {
-    console.log("addRemove :");
+    console.log("addRemove Tag");
   }
 }

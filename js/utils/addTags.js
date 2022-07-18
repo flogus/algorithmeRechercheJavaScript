@@ -1,57 +1,36 @@
 let tagsContainer = document.getElementById("tags-container");
-function addListenerForTags() {
-  const ingredientDropDownMenuLinks = document.querySelectorAll(
-    "#ingredient-container .dropdown-menu a"
-  );
-  const appareilDropDownMenuLinks = document.querySelectorAll(
-    "#appareil-container .dropdown-menu a"
-  );
-  const ustensileDropDownMenuLinks = document.querySelectorAll(
-    "#ustensile-container .dropdown-menu a"
-  );
 
-  ingredientDropDownMenuLinks.forEach(function (element) {
-    element.addEventListener("click", clickAddTag, false);
-  });
-  appareilDropDownMenuLinks.forEach(function (element) {
-    element.addEventListener("click", clickAddTag, false);
-  });
-  ustensileDropDownMenuLinks.forEach(function (element) {
+function addListenerForTags() {
+  // console.log("addListenerForTags", addListenerForTags);
+  const dropDownMenuLinks = document.querySelectorAll(".dropdown-menu a");
+
+  dropDownMenuLinks.forEach(function (element) {
     element.addEventListener("click", clickAddTag, false);
   });
 }
 
 function clickAddTag() {
-  console.log("clickAddTag", this);
-  this.parentElement.classList.add("d-none");
+  const currentMenuId = this.parentElement.parentElement.id;
   const currentType =
-    this.parentElement.parentElement.parentElement.id.split("-")[1];
+    this.parentElement.parentElement.parentElement.parentElement.id.split(
+      "-"
+    )[1];
   const tagCurrentValue = this.innerHTML;
   const tagCurrentLow = searchableWords(this.innerHTML);
+  console.log(
+    "currentList",
+    currentMenuId,
+    currentType,
+    tagCurrentValue,
+    tagCurrentLow
+  );
+
   if (!tags.includes(tagCurrentLow)) {
     tags.push(tagCurrentLow);
     renderTag(currentType, tagCurrentValue);
   }
-
-  const currentList = eval(currentType + "ArrLow");
-  // Seach in currentList if found tag
-  if (currentList.includes(tagCurrentLow)) {
-    //Remove from HTML
-    this.parentElement.remove();
-    //Get index position in array
-    const indexPosition = currentList.findIndex(
-      (element) => element == tagCurrentLow
-    );
-    //Remove from currentList
-    currentList.splice(indexPosition, 1);
-  }
-  const filteredRecipes = getFilterRecipes();
-  if (filteredRecipes.includes(tagCurrentLow)) {
-    console.log("Found in filtered list");
-  }
   removeCurrentTag();
-
-  filterAndRenderResults();
+  renderRecipes();
 }
 
 function renderTag(type, label) {

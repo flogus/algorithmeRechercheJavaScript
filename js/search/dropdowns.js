@@ -158,6 +158,7 @@ function searchDropDownList(event, element, index) {
   } else {
     dropDownObj[index].setMenu(currentList);
   }
+  addListenerForTags();
 }
 
 function filterAndRenderDropdowns() {
