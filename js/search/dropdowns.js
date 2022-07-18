@@ -22,7 +22,6 @@ function getFilterDropDowns() {
   ustensileArr = new Array();
   filteredListDropDowns = new Array();
   recipes.forEach(function (element) {
-    // console.log("element", element);
     let lesIngredients = element.ingredients;
     lesIngredients.forEach(function (ingredients) {
       if (!ingredientArr.includes(ingredients.ingredient)) {
@@ -88,7 +87,6 @@ function addEventListenerToSearchBoxes() {
  * @param {*} index
  */
 function searchDropDownList(event, element, index) {
-  // console.log("currentSearchBoxValue", element, event, index);
   const searchBoxValue = element.value;
   const currentList = getFilterDropDowns()[index];
   let tempList = new Array();
@@ -96,13 +94,11 @@ function searchDropDownList(event, element, index) {
     currentList.forEach((element) => {
       let currentEle = searchableWords(element);
       if (searchableWords(element).includes(searchBoxValue)) {
-        console.log("found", searchableWords(element), searchBoxValue);
         if (!tempList.includes(element)) {
           tempList.push(element);
         }
 
         recipes.forEach(function (recipe) {
-          // console.log("Recipe : ", recipe);
           Object.entries(recipe).forEach((entry) => {
             const [key, value] = entry;
 
@@ -111,9 +107,6 @@ function searchDropDownList(event, element, index) {
                 // if found once add all ingredients
                 let currentIng = searchableWords(ingredients.ingredient);
                 if (currentIng.includes(currentEle)) {
-                  console.log(">>found--------------");
-                  console.log("ingredients", ingredients);
-                  console.log("val", currentIng, " - element:", currentEle);
                   value.forEach(function (ingredients) {
                     if (!tempList.includes(ingredients.ingredient)) {
                       tempList.push(ingredients.ingredient);
@@ -125,7 +118,6 @@ function searchDropDownList(event, element, index) {
 
             if (key == "appliance" && index == 1) {
               // if found add to appareils
-              console.log("value", value);
               let currentApp = searchableWords(value);
               if (currentApp.includes(currentEle)) {
                 if (!tempList.includes(value)) {
@@ -133,27 +125,12 @@ function searchDropDownList(event, element, index) {
                 }
               }
             }
-
-            // if (key == "ustensils" && index == 2) {
-            //   value.forEach(function (ustensile) {
-            //     let currentUst = searchableWords(ustensile);
-            //     console.log("currentUst", currentUst);
-            //     // if found once add all ustensiles
-            //     // if (searchableWords(val).includes(element)) {
-            //     //   value.forEach(function (val) {
-            //     //     if (!tempLis.includes(searchableWords(val))) {
-            //     //       tempList.push(searchableWords(val));
-            //     //     }
-            //     //   });
-            //     // }
-            //   });
-            // }
           });
         });
       }
     });
-    console.log("tempList number : ", tempList.length);
-    console.log("tempList : ", tempList);
+    // console.log("tempList number : ", tempList.length);
+    // console.log("tempList : ", tempList);
     dropDownObj[index].setMenu(tempList);
   } else {
     dropDownObj[index].setMenu(currentList);

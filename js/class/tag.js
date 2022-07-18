@@ -4,9 +4,7 @@ class Tag {
     this._label = label;
   }
   init() {
-    console.log("Init Tag");
     this.getTag();
-    this.addRemove();
   }
   getTag() {
     let template =
@@ -18,8 +16,5 @@ class Tag {
       `<i class="bi bi-x-circle text-white close" data-dismiss="alert"></i>
       </div>`;
     return template;
-  }
-  addRemove() {
-    console.log("addRemove Tag");
   }
 }

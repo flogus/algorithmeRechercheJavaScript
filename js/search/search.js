@@ -30,13 +30,11 @@ function getFilterRecipes() {
 
         if (nameValue.search(term) != -1) {
           if (!filteredRecipes.includes(element)) {
-            // console.log("push name:", nameValue);
             filteredRecipes.push(element);
           }
         }
         if (descriptionValue.search(term) != -1) {
           if (!filteredRecipes.includes(element)) {
-            // console.log("push description:", nameValue);
             filteredRecipes.push(element);
           }
         }
@@ -45,7 +43,6 @@ function getFilterRecipes() {
           const ingredientsValue = searchableWords(elementIng.ingredient);
           if (ingredientsValue.search(term) != -1) {
             if (!filteredRecipes.includes(element)) {
-              // console.log("push ingredients:", nameValue);
               filteredRecipes.push(element);
             }
           }

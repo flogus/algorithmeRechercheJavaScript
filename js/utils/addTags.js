@@ -10,20 +10,12 @@ function addListenerForTags() {
 }
 
 function clickAddTag() {
-  const currentMenuId = this.parentElement.parentElement.id;
   const currentType =
     this.parentElement.parentElement.parentElement.parentElement.id.split(
       "-"
     )[1];
   const tagCurrentValue = this.innerHTML;
   const tagCurrentLow = searchableWords(this.innerHTML);
-  console.log(
-    "currentList",
-    currentMenuId,
-    currentType,
-    tagCurrentValue,
-    tagCurrentLow
-  );
 
   if (!tags.includes(tagCurrentLow)) {
     tags.push(tagCurrentLow);
@@ -36,7 +28,6 @@ function clickAddTag() {
 function renderTag(type, label) {
   const currentTag = new Tag(type, label);
   tagsContainer.innerHTML = tagsContainer.innerHTML + currentTag.getTag();
-  currentTag.addRemove();
 }
 
 function removeCurrentTag() {
@@ -48,7 +39,6 @@ function removeCurrentTag() {
       const position = tags.indexOf(
         e.path[0].attributes["data-text"].nodeValue
       );
-      console.log("position", position);
       if (position != -1) {
         tags.splice(position, 1);
         filterAndRenderResults();
