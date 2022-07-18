@@ -19,6 +19,7 @@ class DropDown {
     this._class = this._type.toLowerCase().replaceAll("é", "e");
     return this._class;
   };
+
   #getName = () => {
     this._class = this._type.toLowerCase();
     return this._class;
@@ -30,7 +31,7 @@ class DropDown {
     let menu =
       "<div id='" +
       this._menuId +
-      "' class='dropDownMenu d-flex align-items-start flex-row flex-wrap'>";
+      "' class='dropDownMenu d-flex align-items-start flex-row flex-wrap w-100'>";
     if (this._data == null) {
       menu += "<div class='px-2 flex-100'>no data for the menu</div>";
     } else {
@@ -45,9 +46,30 @@ class DropDown {
     return menu;
   };
 
-  #addSearch = () => {
-    //   let currentSearch = document.getElementById(this._menuId).
+  #getData = () => {
+    return this._data;
   };
+
+  getSearchBoxId = () => {
+    return "search-" + this._menuId;
+  };
+
+  #addFocus = () => {
+    const searchBoxId = "search-" + this._menuId;
+    const searchBox = document.getElementById(searchBoxId);
+    // let currentData = this.#getData();
+
+    // Focus in searchbox
+    $("#" + searchableWords(this._type) + "-container").on(
+      "show.bs.dropdown",
+      function () {
+        setTimeout(() => {
+          searchBox.focus();
+        }, 0);
+      }
+    );
+  };
+
   /**
    *
    * @param {array} data
@@ -78,7 +100,7 @@ class DropDown {
           <form>`;
     template +=
       `<input type="search" id="search-` +
-      this.#getClassName() +
+      this._menuId +
       `" placeholder="Rechercher un ` +
       this.#getName() +
       `"/>`;
@@ -94,6 +116,10 @@ class DropDown {
     template += this.#buildMenu();
     template += "</div>";
     template += "</div></div>";
+
+    setTimeout(() => {
+      this.#addFocus();
+    }, 200);
     return template;
   };
 }
