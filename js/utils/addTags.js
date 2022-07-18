@@ -1,7 +1,6 @@
 let tagsContainer = document.getElementById("tags-container");
 
 function addListenerForTags() {
-  // console.log("addListenerForTags", addListenerForTags);
   const dropDownMenuLinks = document.querySelectorAll(".dropdown-menu a");
 
   dropDownMenuLinks.forEach(function (element) {
