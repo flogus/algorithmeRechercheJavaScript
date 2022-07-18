@@ -1,3 +1,6 @@
+// const recipes = [];
+// const ingredient = [];
+
 let dropDowns = new Array("Ingrédient", "Appareil", "Ustensile");
 let tags = new Array();
 let results = new Array();
