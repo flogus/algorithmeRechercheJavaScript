@@ -3,9 +3,9 @@
   font-weight: 300;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   .card {
-    flex: 0 0 30%;
+    flex: 0 0 30.5%;
     background-color: #e1e1e1;
     border-radius: 5px;
   }
@@ -20,11 +20,25 @@
     }
   }
 }
-
-@media screen and (max-width: 992px) {
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  #cards-container {
+    .card {
+      flex: 0 0 30%;
+    }
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 992px) {
   #cards-container {
     .card {
       flex: 0 0 45%;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  #cards-container {
+    justify-content: center;
+    .card {
+      flex: 0 0 94%;
     }
   }
 }

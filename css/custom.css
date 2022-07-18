@@ -156,15 +156,15 @@ button.btn {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 #cards-container .card {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 30%;
-          flex: 0 0 30%;
+      -ms-flex: 0 0 30.5%;
+          flex: 0 0 30.5%;
   background-color: #e1e1e1;
   border-radius: 5px;
 }
@@ -184,11 +184,32 @@ button.btn {
           flex: 0 0 60%;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  #cards-container .card {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 30%;
+            flex: 0 0 30%;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
   #cards-container .card {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 45%;
             flex: 0 0 45%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #cards-container {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  #cards-container .card {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 94%;
+            flex: 0 0 94%;
   }
 }
 
