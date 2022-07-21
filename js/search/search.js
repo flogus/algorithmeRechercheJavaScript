@@ -65,6 +65,7 @@ function updateDropdowns() {
   // Get the three search input
   const ids = document.querySelectorAll("#dropdowns-container input");
 
+  // Get the searchbox value
   const seaBoxVal = searchableWords(
     document.getElementById("mainsearch").value
   );
@@ -75,15 +76,14 @@ function updateDropdowns() {
     const currentList = getFilterDropDowns()[index];
     console.log("updateDropdowns > currentList", currentList);
 
+    // If the searchbox value is more than 2, do the search
     if (seaBoxVal.length > 2) {
       currentList.forEach((element) => {
         let elem = searchableWords(element);
 
+        // If the searchbox value is include in the current element
         if (elem.includes(seaBoxVal)) {
-          console.log("ELEM", elem, seaBoxVal);
-          // allez chercher dans toutes les recettes et pour chaques type
-          console.log("filteredRecipes", typeof filteredRecipes);
-
+          // For every recipes
           recipes.forEach(function (recipe) {
             Object.entries(recipe).forEach((entry) => {
               const [key, value] = entry;
@@ -91,9 +91,9 @@ function updateDropdowns() {
               if (key == "ingredients" && index == 0) {
                 value.forEach(function (ingredients) {
                   let currentIng = searchableWords(ingredients.ingredient);
-                  // if found once add all ingredients
-
                   console.log("currentIng ", currentIng);
+
+                  // if found once add all ingredients
                   if (currentIng.includes(elem)) {
                     console.log("FOUND ", currentIng, elem);
 
