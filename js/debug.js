@@ -50,7 +50,7 @@ function addEvent() {
 }
 function changeData() {
   // console.log("changeData");
-  theDropDown2.setMenu(theData2);
+  theDropDown2.setMenu(theTestData2);
 }
 function init() {
   buildTheDropDown();

@@ -1,16 +1,3 @@
-const theData2 = [
-  "self",
-  "close",
-  "development",
-  "lend",
-  "innovation",
-  "inquiry",
-  "decisive",
-  "jacket",
-  "computing",
-  "mood",
-];
-
 /**
  * Filters recipes for the dropdowns
  * return a list of arrays
@@ -83,7 +70,8 @@ function addEventListenerToSearchBoxes() {
 
 /**
  * Make the search for the dropdowns
- * @param {*} e
+ * @param {*} event
+ * @param {*} element
  * @param {*} index
  */
 function searchDropDownList(event, element, index) {
@@ -141,8 +129,4 @@ function searchDropDownList(event, element, index) {
 function filterAndRenderDropdowns() {
   getFilterDropDowns();
   renderDropDowns();
-
-  setTimeout(() => {
-    addListenerForTags();
-  }, 500);
 }
