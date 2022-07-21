@@ -46,10 +46,6 @@ class DropDown {
     return menu;
   };
 
-  #getData = () => {
-    return this._data;
-  };
-
   getSearchBoxId = () => {
     return "search-" + this._menuId;
   };
@@ -57,7 +53,6 @@ class DropDown {
   #addFocus = () => {
     const searchBoxId = "search-" + this._menuId;
     const searchBox = document.getElementById(searchBoxId);
-    // let currentData = this.#getData();
 
     // Focus in searchbox
     $("#" + searchableWords(this._type) + "-container").on(
