@@ -55,6 +55,10 @@ function getFilterRecipes() {
   return filteredRecipes;
 }
 
+/**
+ * Update the dropdowns when searching in the main searchbox
+ * It will update every dropdowns using the setMenu() from the Dropdown Class
+ */
 function updateDropdowns() {
   const filteredRecipes = getFilterRecipes();
 
