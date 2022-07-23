@@ -125,8 +125,3 @@ function searchDropDownList(event, element, index) {
   }
   addListenerForTags();
 }
-
-function filterAndRenderDropdowns() {
-  getFilterDropDowns();
-  renderDropDowns();
-}

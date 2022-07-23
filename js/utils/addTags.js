@@ -1,7 +1,5 @@
-let tagsContainer = document.getElementById("tags-container");
-
 function addListenerForTags() {
-  console.log("addListenerForTags");
+  // console.log("addListenerForTags");
   const dropDownMenuLinks = document.querySelectorAll(".dropdown-menu a");
 
   dropDownMenuLinks.forEach(function (element) {
@@ -21,16 +19,17 @@ function clickAddTag() {
     tags.push(tagCurrentLow);
     renderTag(currentType, tagCurrentValue);
   }
-  removeCurrentTag();
-  renderRecipes();
+  globalRender();
 }
 
+let tagsContainer = document.getElementById("tags-container");
 function renderTag(type, label) {
   const currentTag = new Tag(type, label);
   tagsContainer.innerHTML = tagsContainer.innerHTML + currentTag.getTag();
 }
 
 function removeCurrentTag() {
+  console.log("removeCurrentTag");
   const allTagContainer = document.querySelectorAll("div.alert");
   allTagContainer.forEach((tag) => {
     const tagLow = searchableWords(tag.textContent);

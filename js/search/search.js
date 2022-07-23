@@ -1,8 +1,8 @@
 let mainSearch = document.getElementById("mainsearch");
 
 function addListenerForMainSearch() {
-  mainSearch.addEventListener("keyup", filterAndRenderResults, false);
-  mainSearch.addEventListener("change", filterAndRenderResults, false);
+  mainSearch.addEventListener("keyup", globalRender, false);
+  mainSearch.addEventListener("change", globalRender, false);
 }
 
 /**
@@ -24,6 +24,7 @@ function getFilterRecipes() {
 
   if (mainSearch.value.length > 2 || searchTerms.length > 0) {
     recipes.forEach(function callback(element) {
+      console.log("searchTerms", searchTerms);
       searchTerms.forEach(function callback(term) {
         const nameValue = searchableWords(element.name);
         const descriptionValue = searchableWords(element.description);
@@ -74,7 +75,7 @@ function updateDropdowns() {
   ids.forEach((element, index) => {
     const tempList = new Array();
     const currentList = getFilterDropDowns()[index];
-    console.log("updateDropdowns > currentList", currentList);
+    // console.log("updateDropdowns > currentList", currentList);
 
     // If the searchbox value is more than 2, do the search
     if (seaBoxVal.length > 2) {
@@ -91,21 +92,21 @@ function updateDropdowns() {
               if (key == "ingredients" && index == 0) {
                 value.forEach(function (ingredients) {
                   let currentIng = searchableWords(ingredients.ingredient);
-                  console.log("currentIng ", currentIng);
+                  // console.log("currentIng ", currentIng);
 
                   // if found once add all ingredients
                   if (currentIng.includes(elem)) {
-                    console.log("FOUND ", currentIng, elem);
+                    // console.log("FOUND ", currentIng, elem);
 
                     value.forEach(function (ingredients) {
-                      console.log("Value ", value);
+                      // console.log("Value ", value);
                       if (!tempList.includes(currentIng)) {
-                        console.log(
-                          "Add ",
-                          tempList,
-                          currentIng,
-                          ingredients.ingredient
-                        );
+                        // console.log(
+                        //   "Add ",
+                        //   tempList,
+                        //   currentIng,
+                        //   ingredients.ingredient
+                        // );
                         tempList.push(ingredients.ingredient);
                       }
                     });
@@ -144,12 +145,4 @@ function renderRecipes() {
     cardsContainer.innerHTML =
       '<div class="p-2 w-100 text-center">Aucune recette ne correspond à vos critères</div>';
   }
-  updateDropdowns();
-  setTotalRecipes();
-  addListenerForTags();
-}
-
-function filterAndRenderResults() {
-  getFilterRecipes();
-  renderRecipes();
 }
