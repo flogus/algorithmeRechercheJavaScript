@@ -24,36 +24,68 @@ function getFilterRecipes() {
 
   if (mainSearch.value.length > 2 || searchTerms.length > 0) {
     recipes.forEach(function callback(element) {
-      console.log("searchTerms", searchTerms);
-      searchTerms.forEach(function callback(term) {
-        const nameValue = searchableWords(element.name);
-        const descriptionValue = searchableWords(element.description);
-
-        if (nameValue.search(term) != -1) {
-          if (!filteredRecipes.includes(element)) {
-            filteredRecipes.push(element);
-          }
-        }
-        if (descriptionValue.search(term) != -1) {
-          if (!filteredRecipes.includes(element)) {
-            filteredRecipes.push(element);
-          }
-        }
-
-        element.ingredients.forEach((elementIng) => {
-          const ingredientsValue = searchableWords(elementIng.ingredient);
-          if (ingredientsValue.search(term) != -1) {
-            if (!filteredRecipes.includes(element)) {
-              filteredRecipes.push(element);
-            }
-          }
-        });
-      });
+      const allterms = hasAllterms(element, searchTerms);
+      if (allterms) {
+        filteredRecipes.push(element);
+      }
     });
   } else {
     filteredRecipes = [...recipes];
   }
+  console.log(filteredRecipes);
   return filteredRecipes;
+}
+/**
+ * Allow to test if a recipe has all search terms
+ * @param {*} element
+ * @param {*} searchTerms
+ * @returns
+ */
+function hasAllterms(element, searchTerms) {
+  const counterTermsValid = new Array();
+  let counterTerms = 0;
+  // console.group("hasAllterms");
+  // console.log(element, searchTerms);
+  const name = searchableWords(element.name);
+  const description = searchableWords(element.description);
+  const ingredients = element.ingredients;
+  // console.log("name", name);
+  // console.log("description", description);
+  // console.log("ingredients", ingredients);
+  for (let index = 0; index < searchTerms.length; index++) {
+    let counterCurrentTerm = 0;
+    const currentTerm = searchTerms[index];
+    if (name.includes(currentTerm)) {
+      counterTermsValid.push({ name: currentTerm });
+      if (counterCurrentTerm == 0) {
+        counterCurrentTerm++;
+        counterTerms++;
+      }
+    }
+    if (description.includes(currentTerm)) {
+      counterTermsValid.push({ description: currentTerm });
+      if (counterCurrentTerm == 0) {
+        counterCurrentTerm++;
+        counterTerms++;
+      }
+    }
+    for (let indexIng = 0; indexIng < ingredients.length; indexIng++) {
+      const ing = searchableWords(ingredients[indexIng].ingredient);
+      if (ing.includes(currentTerm)) {
+        counterTermsValid.push({ ingredient: currentTerm });
+        if (counterCurrentTerm == 0) {
+          counterCurrentTerm++;
+          counterTerms++;
+        }
+      }
+    }
+  }
+  if (counterTerms == searchTerms.length) {
+    return true;
+  }
+  // console.log(counterTermsValid, counterTerms);
+  // console.groupEnd();
+  return false;
 }
 
 /**
