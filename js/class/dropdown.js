@@ -53,7 +53,6 @@ class DropDown {
   #addFocus = () => {
     const searchBoxId = "search-" + this._menuId;
     const searchBox = document.getElementById(searchBoxId);
-    console.log("searchBox", searchBox);
     // Focus in searchbox
     $("#" + searchableWords(this._type) + "-container").on(
       "show.bs.dropdown",
@@ -70,7 +69,6 @@ class DropDown {
    * @param {array} data
    */
   setMenu = (data) => {
-    console.log("setMenu", data);
     document.getElementById(this._menuId).innerHTML = this.#buildMenu(data);
   };
 

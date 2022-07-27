@@ -36,16 +36,10 @@ function getFilterDropDowns() {
 const dropDownObj = {};
 
 async function renderDropDowns() {
-  console.groupCollapsed("renderDropDowns");
   const dropDownsContainer = document.getElementById("dropdowns-container");
   dropDownsContainer.innerHTML = "";
 
-  if (dropDownObj.length > 0) {
-    console.log("dropDownObj are here");
-  }
-
   dropDowns.forEach((element, index) => {
-    console.log(element, index);
     // Get the lists
     let currentList = getFilterDropDowns();
 
@@ -58,12 +52,7 @@ async function renderDropDowns() {
 
     // Insert data in the Dropdown
     dropDownObj[index].setMenu(currentList[index]);
-    console.log("index", index, "currentList", currentList[index]);
-
-    // let searchBoxId = dropDownObj[index].getSearchBoxId();
-    // let searchBoxIdInput = document.getElementById(searchBoxId);
   });
-  console.groupEnd();
   addEventListenerToSearchBoxes();
 }
 /**
@@ -85,7 +74,6 @@ function addEventListenerToSearchBoxes() {
  * @param {*} index
  */
 function searchDropDownList(event, element, index) {
-  console.log("searchDropDownList");
   const searchBoxValue = element.value;
   const currentList = getFilterDropDowns()[index];
   let tempList = new Array();
@@ -129,8 +117,6 @@ function searchDropDownList(event, element, index) {
         });
       }
     });
-    // console.log("tempList number : ", tempList.length);
-    // console.log("tempList : ", tempList);
     dropDownObj[index].setMenu(tempList);
   } else {
     dropDownObj[index].setMenu(currentList);

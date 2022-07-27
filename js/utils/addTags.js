@@ -30,7 +30,6 @@ function renderTag(type, label) {
 }
 
 function removeCurrentTag() {
-  console.log("removeCurrentTag");
   const allTagContainer = document.querySelectorAll("div.alert");
   allTagContainer.forEach((tag) => {
     const tagLow = searchableWords(tag.textContent);
