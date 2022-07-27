@@ -32,7 +32,7 @@ function getFilterRecipes() {
   } else {
     filteredRecipes = [...recipes];
   }
-  console.log(filteredRecipes);
+  // console.log("filteredRecipes", filteredRecipes);
   return filteredRecipes;
 }
 /**
@@ -42,7 +42,6 @@ function getFilterRecipes() {
  * @returns
  */
 function hasAllterms(element, searchTerms) {
-  const counterTermsValid = new Array();
   let counterTerms = 0;
   // console.group("hasAllterms");
   // console.log(element, searchTerms);
@@ -56,14 +55,13 @@ function hasAllterms(element, searchTerms) {
     let counterCurrentTerm = 0;
     const currentTerm = searchTerms[index];
     if (name.includes(currentTerm)) {
-      counterTermsValid.push({ name: currentTerm });
       if (counterCurrentTerm == 0) {
         counterCurrentTerm++;
         counterTerms++;
       }
     }
     if (description.includes(currentTerm)) {
-      counterTermsValid.push({ description: currentTerm });
+      console.log("currentTerm", currentTerm);
       if (counterCurrentTerm == 0) {
         counterCurrentTerm++;
         counterTerms++;
@@ -72,18 +70,18 @@ function hasAllterms(element, searchTerms) {
     for (let indexIng = 0; indexIng < ingredients.length; indexIng++) {
       const ing = searchableWords(ingredients[indexIng].ingredient);
       if (ing.includes(currentTerm)) {
-        counterTermsValid.push({ ingredient: currentTerm });
         if (counterCurrentTerm == 0) {
           counterCurrentTerm++;
           counterTerms++;
         }
       }
     }
+    // console.log(counterCurrentTerm, counterTerms);
   }
   if (counterTerms == searchTerms.length) {
     return true;
   }
-  // console.log(counterTermsValid, counterTerms);
+  // console.log(counterTerms);
   // console.groupEnd();
   return false;
 }
@@ -93,6 +91,7 @@ function hasAllterms(element, searchTerms) {
  * It will update every dropdowns using the setMenu() from the Dropdown Class
  */
 function updateDropdowns() {
+  console.log("updateDropdowns");
   const filteredRecipes = getFilterRecipes();
 
   // Get the three search input

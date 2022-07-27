@@ -8,7 +8,8 @@ function getFilterDropDowns() {
   appareilArr = new Array();
   ustensileArr = new Array();
   filteredListDropDowns = new Array();
-  recipes.forEach(function (element) {
+  const filteredRecipes = getFilterRecipes();
+  filteredRecipes.forEach(function (element) {
     let lesIngredients = element.ingredients;
     lesIngredients.forEach(function (ingredients) {
       if (!ingredientArr.includes(ingredients.ingredient)) {
@@ -35,25 +36,34 @@ function getFilterDropDowns() {
 const dropDownObj = {};
 
 async function renderDropDowns() {
+  console.groupCollapsed("renderDropDowns");
   const dropDownsContainer = document.getElementById("dropdowns-container");
   dropDownsContainer.innerHTML = "";
 
+  if (dropDownObj.length > 0) {
+    console.log("dropDownObj are here");
+  }
+
   dropDowns.forEach((element, index) => {
+    console.log(element, index);
     // Get the lists
     let currentList = getFilterDropDowns();
 
     // Create a new Dropdown
-    dropDownObj[index] = new DropDown(element, currentList[index]);
-
+    if (Object.keys(dropDownObj).length < 3) {
+      dropDownObj[index] = new DropDown(element, currentList[index]);
+    }
     // Insert the Dropdown in the page
     dropDownsContainer.innerHTML += dropDownObj[index].getDropDown();
 
     // Insert data in the Dropdown
     dropDownObj[index].setMenu(currentList[index]);
+    console.log("index", index, "currentList", currentList[index]);
 
     // let searchBoxId = dropDownObj[index].getSearchBoxId();
     // let searchBoxIdInput = document.getElementById(searchBoxId);
   });
+  console.groupEnd();
   addEventListenerToSearchBoxes();
 }
 /**
@@ -75,18 +85,20 @@ function addEventListenerToSearchBoxes() {
  * @param {*} index
  */
 function searchDropDownList(event, element, index) {
+  console.log("searchDropDownList");
   const searchBoxValue = element.value;
   const currentList = getFilterDropDowns()[index];
   let tempList = new Array();
   if (searchBoxValue.length > 2) {
     currentList.forEach((element) => {
       let currentEle = searchableWords(element);
+      const filteredRecipes = getFilterRecipes();
       if (searchableWords(element).includes(searchBoxValue)) {
         if (!tempList.includes(element)) {
           tempList.push(element);
         }
 
-        recipes.forEach(function (recipe) {
+        filteredRecipes.forEach(function (recipe) {
           Object.entries(recipe).forEach((entry) => {
             const [key, value] = entry;
 

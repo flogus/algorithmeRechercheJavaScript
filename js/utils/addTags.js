@@ -19,6 +19,7 @@ function clickAddTag() {
     tags.push(tagCurrentLow);
     renderTag(currentType, tagCurrentValue);
   }
+  removeCurrentTag();
   globalRender();
 }
 
@@ -40,7 +41,7 @@ function removeCurrentTag() {
       );
       if (position != -1) {
         tags.splice(position, 1);
-        filterAndRenderResults();
+        globalRender();
       }
     });
   });

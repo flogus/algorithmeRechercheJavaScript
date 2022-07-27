@@ -2,7 +2,7 @@ function globalRender() {
   console.log("globalRender");
   renderDropDowns();
   renderRecipes();
-  updateDropdowns();
+  // updateDropdowns();
   setTotalRecipes();
   addListenerForTags();
 }
