@@ -50,6 +50,8 @@ async function renderDropDowns() {
     // Insert the Dropdown in the page
     dropDownsContainer.innerHTML += dropDownObj[index].getDropDown();
 
+    currentList[index].sort();
+
     // Insert data in the Dropdown
     dropDownObj[index].setMenu(currentList[index]);
   });
@@ -117,8 +119,10 @@ function searchDropDownList(event, element, index) {
         });
       }
     });
+    tempList.sort();
     dropDownObj[index].setMenu(tempList);
   } else {
+    currentList.sort();
     dropDownObj[index].setMenu(currentList);
   }
   addListenerForTags();
