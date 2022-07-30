@@ -11,13 +11,14 @@ function addListenerForMainSearch() {
  */
 function getFilterRecipes() {
   let searchTerms = new Array();
+  const mainSearchLow = searchableWords(mainSearch.value);
 
   // Fill searchTerms Array
   if (tags.length > 0) {
     searchTerms.push(...tags);
   }
   if (mainSearch.value.length > 2) {
-    searchTerms.push(mainSearch.value);
+    searchTerms.push(mainSearchLow);
   }
 
   let filteredRecipes = new Array();
