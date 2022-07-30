@@ -25,7 +25,6 @@ function getFilterRecipes() {
 
   if (mainSearch.value.length > 2 || searchTerms.length > 0) {
     let modifiedRecipe = recipes.filter(function (element) {
-      console.log("ele:", element);
       const allterms = hasAllterms(element, searchTerms);
       if (allterms) {
         return element;
