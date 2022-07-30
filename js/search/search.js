@@ -33,7 +33,6 @@ function getFilterRecipes() {
   } else {
     filteredRecipes = [...recipes];
   }
-  // console.log("filteredRecipes", filteredRecipes);
   return filteredRecipes;
 }
 /**
