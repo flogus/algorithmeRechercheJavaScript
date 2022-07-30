@@ -24,16 +24,17 @@ function getFilterRecipes() {
   let filteredRecipes = new Array();
 
   if (mainSearch.value.length > 2 || searchTerms.length > 0) {
-    recipes.forEach(function callback(element) {
+    let modifiedRecipe = recipes.filter(function (element) {
+      console.log("ele:", element);
       const allterms = hasAllterms(element, searchTerms);
       if (allterms) {
-        filteredRecipes.push(element);
+        return element;
       }
     });
+    filteredRecipes = [...modifiedRecipe];
   } else {
     filteredRecipes = [...recipes];
   }
-  // console.log("filteredRecipes", filteredRecipes);
   return filteredRecipes;
 }
 /**
